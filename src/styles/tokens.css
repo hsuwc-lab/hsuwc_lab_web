@@ -1,0 +1,41 @@
+/* 設計變數：色彩、字體、間距。全網站皆可使用 */
+:root {
+  /* 色彩：背景 */
+  --color-bg: #FFFFFF;          /* 頁面背景、導覽列 */
+  --color-bg-soft: #F4F7FA;     /* Intro、Hero、內頁標題帶、最新消息區塊 */
+
+  /* 色彩：主色 */
+  --color-navy: #1E3550;        /* 標題、主要按鈕、Footer 背景 */
+  --color-blue: #2D6497;        /* 連結、小標籤、底線、副標 */
+  --color-blue-soft: #E7EFF7;   /* hover 底色、頭像與照片佔位底色 */
+
+  /* 色彩：文字與線條 */
+  --color-text: #1C2530;        /* 主要文字 */
+  --color-text-muted: #566474;  /* 次要文字、日期 */
+  --color-rule: #DCE3EB;        /* 分隔線、邊框 */
+
+  /* 色彩：Footer（深藍底上的淺色文字） */
+  --color-footer-text: #C9D5E2;
+  --color-footer-muted: #A9BACB;
+
+  /* 消息分類標籤：低飽和度的底色與文字色 */
+  --tag-news-bg: #E7EFF7;
+  --tag-news-text: #2D5A86;
+  --tag-event-bg: #E8F2EC;
+  --tag-event-text: #2F6B4A;
+  --tag-award-bg: #F6EEDF;
+  --tag-award-text: #7A5A1E;
+  --tag-publication-bg: #EEEBF5;
+  --tag-publication-text: #4F4680;
+
+  /* 字體：只用系統內建字體 */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+  --font-display: Georgia, "Times New Roman",
+                  "PingFang TC", "Microsoft JhengHei", serif;
+
+  /* 版面 */
+  --container-width: 1120px;    /* 內容最大寬度 */
+  --nav-height: 68px;           /* 導覽列高度 */
+  --radius: 4px;                /* 按鈕、照片的圓角 */
+}
