@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Home",
+    "professor": "Professor",
+    "profile": "Profile",
+    "column": "Column",
+    "publications": "Publications",
+    "people": "People",
+    "projects": "Research Projects",
+    "news": "News & Awards"
+  },
+  "common": {
+    "notFound": "Page not found",
+    "backHome": "Back to Home"
+  }
+}

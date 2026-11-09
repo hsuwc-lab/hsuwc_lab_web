@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "首頁",
+    "professor": "指導教授",
+    "profile": "介紹",
+    "column": "專欄",
+    "publications": "研究著作",
+    "people": "研究團隊",
+    "projects": "研究計畫",
+    "news": "消息與獲獎"
+  },
+  "common": {
+    "notFound": "找不到頁面",
+    "backHome": "回到首頁"
+  }
+}
