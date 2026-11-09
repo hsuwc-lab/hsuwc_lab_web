@@ -1,0 +1,397 @@
+<title>HCI Lab Light Mockup</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: a light, editorial academic homepage — white pages, navy type, thin rules instead of shapes or glow. */
+:root {
+  color-scheme: light;
+  --bg: #FFFFFF;
+  --bg-soft: #F4F7FA;
+  --navy: #1E3550;
+  --blue: #2D6497;
+  --blue-soft: #E7EFF7;
+  --ink: #1C2530;
+  --ink-2: #566474;
+  --rule: #DCE3EB;
+  --tag-news: #E7EFF7;   --tag-news-ink: #2D5A86;
+  --tag-event: #E8F2EC;  --tag-event-ink: #2F6B4A;
+  --tag-award: #F6EEDF;  --tag-award-ink: #7A5A1E;
+  --tag-pub: #EEEBF5;    --tag-pub-ink: #4F4680;
+
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+  --serif: Georgia, "Times New Roman", "PingFang TC", "Microsoft JhengHei", serif;
+  --wrap: 1120px;
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.7; }
+a { color: inherit; }
+button { font: inherit; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+
+/* ---------- Note banner ---------- */
+.mock-note { background: var(--navy); color: #DCE6F0; font-size: 13px; }
+.mock-note .wrap { padding-block: 8px; }
+
+/* ---------- Navigation ---------- */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--rule); }
+.nav .wrap { display: flex; align-items: center; gap: 24px; min-height: 68px; }
+.brand { display: flex; flex-direction: column; text-decoration: none; line-height: 1.2; }
+.brand b { font-family: var(--serif); font-size: 21px; font-weight: 600; color: var(--navy); letter-spacing: .01em; }
+.brand span { font-size: 11.5px; color: var(--ink-2); letter-spacing: .04em; }
+.menu { display: flex; gap: 4px; margin: 0 auto; list-style: none; padding: 0; }
+.menu a { display: block; padding: 8px 12px; text-decoration: none; font-size: 14.5px; color: var(--ink-2); border-bottom: 2px solid transparent; }
+.menu a:hover { color: var(--navy); }
+.menu a[aria-current="page"] { color: var(--navy); font-weight: 600; border-bottom-color: var(--blue); }
+.tools { display: flex; align-items: center; gap: 14px; font-size: 13.5px; color: var(--ink-2); }
+.lang button { background: none; border: 0; padding: 4px 2px; color: var(--ink-2); cursor: pointer; }
+.lang button[aria-pressed="true"] { color: var(--navy); font-weight: 600; }
+.icon-btn { width: 34px; height: 34px; display: grid; place-items: center; background: none; border: 1px solid var(--rule); border-radius: 50%; color: var(--navy); cursor: pointer; }
+.menu-toggle { display: none; }
+
+/* ---------- Hero ---------- */
+.hero { background: var(--bg-soft); border-bottom: 1px solid var(--rule); }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 56px; padding-block: 72px 64px; align-items: end; }
+.eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); font-weight: 600; margin: 0 0 10px; }
+.hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 6vw, 64px); line-height: 1.08; color: var(--navy); margin: 0; text-wrap: balance; }
+.hero .sub { font-family: var(--serif); font-style: italic; font-size: clamp(18px, 2.2vw, 22px); color: var(--blue); margin: 10px 0 18px; }
+.hero p.lead { max-width: 34em; color: var(--ink-2); margin: 0 0 28px; font-size: 16px; }
+.btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 4px; font-size: 14.5px; text-decoration: none; cursor: pointer; border: 1px solid var(--navy); }
+.btn.primary { background: var(--navy); color: #fff; }
+.btn.primary:hover { background: var(--blue); border-color: var(--blue); }
+.btn.ghost { background: transparent; color: var(--navy); }
+.btn.ghost:hover { background: var(--blue-soft); }
+.facts { border-left: 1px solid var(--rule); padding-left: 32px; display: grid; gap: 18px; }
+.facts div { display: grid; gap: 2px; }
+.facts dt { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
+.facts dd { margin: 0; color: var(--ink); font-size: 15px; }
+
+/* ---------- Sections ---------- */
+section.block { padding-block: 72px; }
+section.alt { background: var(--bg-soft); border-block: 1px solid var(--rule); }
+.head { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+.head h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3.2vw, 34px); color: var(--navy); margin: 0; line-height: 1.2; }
+.head p { margin: 8px 0 0; color: var(--ink-2); max-width: 40em; }
+.link-more { font-size: 14px; color: var(--blue); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; white-space: nowrap; }
+.link-more:hover { color: var(--navy); }
+
+/* ---------- Research areas ---------- */
+.areas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 2px solid var(--navy); }
+.area { padding: 26px 28px 28px 0; display: grid; grid-template-rows: auto auto 1fr auto; gap: 8px; text-decoration: none; }
+.area + .area { padding-left: 28px; border-left: 1px solid var(--rule); }
+.area .num { font-size: 12px; color: var(--ink-2); letter-spacing: .1em; }
+.area h3 { font-family: var(--serif); font-weight: 600; font-size: 20px; color: var(--navy); margin: 0; line-height: 1.3; }
+.area p { margin: 0; color: var(--ink-2); }
+.area .go { font-size: 13.5px; color: var(--blue); margin-top: 10px; }
+.area:hover h3 { color: var(--blue); }
+.area:hover .go { text-decoration: underline; }
+
+/* ---------- News ---------- */
+.news { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.news li { border-bottom: 1px solid var(--rule); }
+.news a { display: grid; grid-template-columns: 130px 110px minmax(0, 1fr) auto; gap: 20px; align-items: baseline; padding: 20px 4px; text-decoration: none; }
+.news a:hover .title { color: var(--blue); }
+.date { font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 14px; }
+.tag { justify-self: start; font-size: 12px; padding: 2px 10px; border-radius: 3px; font-weight: 600; letter-spacing: .02em; }
+.tag.news { background: var(--tag-news); color: var(--tag-news-ink); }
+.tag.event { background: var(--tag-event); color: var(--tag-event-ink); }
+.tag.award { background: var(--tag-award); color: var(--tag-award-ink); }
+.tag.pub { background: var(--tag-pub); color: var(--tag-pub-ink); }
+.title { font-size: 16px; color: var(--ink); }
+.arrow { color: var(--ink-2); }
+
+/* ---------- Professor & team ---------- */
+.duo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 56px; }
+.duo > div { min-width: 0; }
+.duo .col + .col { border-left: 1px solid var(--rule); padding-left: 56px; }
+.prof { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; align-items: start; }
+.photo { width: 150px; aspect-ratio: 4 / 5; max-width: 100%; background: var(--blue-soft); border: 1px solid var(--rule); border-radius: 4px; display: grid; place-items: center; color: var(--blue); font-size: 12.5px; text-align: center; padding: 8px; }
+.prof h3 { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--navy); margin: 0; }
+.prof .role { color: var(--ink-2); font-size: 14px; margin: 2px 0 12px; }
+.prof p { margin: 0 0 18px; color: var(--ink-2); }
+
+.team-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 20px; }
+.arrows { display: flex; gap: 8px; }
+.arrows button { width: 34px; height: 34px; border: 1px solid var(--rule); background: var(--bg); color: var(--navy); border-radius: 50%; cursor: pointer; }
+.arrows button:disabled { opacity: .35; cursor: default; }
+.track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding-bottom: 4px; }
+.track::-webkit-scrollbar { display: none; }
+.person { flex: 0 0 calc((100% - 48px) / 4); scroll-snap-align: start; text-align: center; text-decoration: none; }
+.avatar { width: 96px; height: 96px; max-width: 100%; margin: 0 auto 10px; border-radius: 50%; background: var(--blue-soft); border: 1px solid var(--rule); display: grid; place-items: center; font-family: var(--serif); font-size: 26px; color: var(--navy); }
+.person .name { font-size: 14.5px; color: var(--ink); font-weight: 600; line-height: 1.4; }
+.person .deg { font-size: 12.5px; color: var(--ink-2); }
+.person.join .avatar { background: var(--bg); border: 1px dashed var(--blue); color: var(--blue); font-family: var(--sans); font-size: 28px; }
+.person.join .name { color: var(--blue); }
+.person.join:hover .avatar { background: var(--blue-soft); }
+.bar { position: relative; height: 4px; background: var(--rule); border-radius: 2px; margin-top: 18px; cursor: pointer; touch-action: none; }
+.bar .thumb { position: absolute; top: 0; bottom: 0; left: 0; background: var(--navy); border-radius: 2px; }
+
+/* ---------- Footer ---------- */
+footer { background: var(--navy); color: #C9D5E2; }
+footer .wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 40px; padding-block: 40px 28px; }
+footer .brand b { color: #fff; }
+footer .brand span { color: #A9BACB; }
+footer nav { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 14px; align-items: center; }
+footer nav a { text-decoration: none; color: #DCE6F0; }
+footer nav a:hover { text-decoration: underline; }
+.copy { grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,.15); padding-top: 16px; font-size: 12.5px; color: #A9BACB; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.mail { user-select: all; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .menu { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: var(--bg); border-bottom: 1px solid var(--rule); padding: 8px var(--gutter-r) 12px var(--gutter-l); }
+  .menu.open { display: flex; }
+  .menu-toggle { display: grid; }
+  .tools { margin-left: auto; }
+  .hero .wrap, .duo { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .facts { border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 24px; }
+  .duo .col + .col { border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 40px; }
+}
+@media (max-width: 720px) {
+  .areas { grid-template-columns: minmax(0, 1fr); }
+  .area, .area + .area { padding: 22px 0; border-left: 0; }
+  .area + .area { border-top: 1px solid var(--rule); }
+  .news a { grid-template-columns: auto minmax(0, 1fr); gap: 6px 14px; }
+  .news .title { grid-column: 1 / -1; }
+  .news .arrow { display: none; }
+  .person { flex-basis: calc((100% - 32px) / 2.5); }
+  .prof { grid-template-columns: minmax(0, 1fr); }
+  .arrows { display: none; }
+  footer .wrap { grid-template-columns: minmax(0, 1fr); }
+  section.block { padding-block: 52px; }
+}
+@media (prefers-reduced-motion: reduce) { .track { scroll-behavior: auto; } }
+</style>
+
+<div class="mock-note"><div class="wrap">示意稿：淺色學術版首頁。照片以文字佔位，資料為範例。</div></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" title="回到 Intro">
+      <b>HCI Lab</b>
+      <span>Human-Centered AI Research</span>
+    </a>
+    <ul class="menu" id="menu">
+      <li><a href="#top" aria-current="page">Home</a></li>
+      <li><a href="#professor">Professor</a></li>
+      <li><a href="#team">People</a></li>
+      <li><a href="#research">Research Projects</a></li>
+      <li><a href="#news">News &amp; Awards</a></li>
+    </ul>
+    <div class="tools">
+      <div class="lang" role="group" aria-label="語言">
+        <button type="button" id="lang-zh" aria-pressed="false">中文</button> |
+        <button type="button" id="lang-en" aria-pressed="true">EN</button>
+      </div>
+      <button class="icon-btn" type="button" aria-label="搜尋">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <button class="icon-btn menu-toggle" type="button" id="menu-toggle" aria-label="開啟選單" aria-expanded="false" aria-controls="menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Department of Information Management</p>
+        <h1>HCI Lab</h1>
+        <p class="sub">Human-Centered AI Research</p>
+        <p class="lead">Bridging people, technology, and society for a smarter and healthier future. We study how people work with intelligent systems, in everyday services and in healthcare.</p>
+        <div class="btns">
+          <a class="btn primary" href="#research">Explore Our Research <span aria-hidden="true">→</span></a>
+          <a class="btn ghost" href="#news">Latest News</a>
+        </div>
+      </div>
+      <dl class="facts">
+        <div><dt>Principal Investigator</dt><dd>(Professor Name), Professor</dd></div>
+        <div><dt>Research Focus</dt><dd>HCI · Intelligent Services · Healthcare Informatics</dd></div>
+        <div><dt>Location</dt><dd>Room ○○○, (Building), (University)</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="block" id="research">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Our Focus</p>
+          <h2>Research Areas</h2>
+          <p>Exploring innovative solutions at the intersection of human, technology, and healthcare.</p>
+        </div>
+      </div>
+      <div class="areas">
+        <a class="area" href="#research">
+          <span class="num">01</span>
+          <h3>Human-Computer Interaction</h3>
+          <p>Designing intuitive and inclusive human-AI interfaces.</p>
+          <span class="go">Related projects →</span>
+        </a>
+        <a class="area" href="#research">
+          <span class="num">02</span>
+          <h3>Intelligent Services</h3>
+          <p>Building intelligent services for everyday life.</p>
+          <span class="go">Related projects →</span>
+        </a>
+        <a class="area" href="#research">
+          <span class="num">03</span>
+          <h3>Healthcare / Medical Informatics Management</h3>
+          <p>Advancing data-driven healthcare and medical informatics.</p>
+          <span class="go">Related projects →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt" id="news">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Latest News</p>
+          <h2>News &amp; Updates</h2>
+        </div>
+        <a class="link-more" href="#news">View All</a>
+      </div>
+      <ul class="news">
+        <li><a href="#news">
+          <span class="date">2025.04.22</span><span class="tag award">Award</span>
+          <span class="title">Our Lab Wins Best Paper Award at HCI International 2025</span><span class="arrow" aria-hidden="true">→</span>
+        </a></li>
+        <li><a href="#news">
+          <span class="date">2025.04.15</span><span class="tag event">Event</span>
+          <span class="title">Workshop on Trustworthy AI for Healthcare Successfully Held</span><span class="arrow" aria-hidden="true">→</span>
+        </a></li>
+        <li><a href="#news">
+          <span class="date">2025.02.20</span><span class="tag pub">Publication</span>
+          <span class="title">A New Study on Interactive Health Systems Published in JMIR</span><span class="arrow" aria-hidden="true">→</span>
+        </a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap duo">
+      <div class="col" id="professor">
+        <div class="head"><div><p class="eyebrow">Faculty</p><h2>Meet Our Professor</h2></div></div>
+        <div class="prof">
+          <div class="photo">教授照片</div>
+          <div>
+            <h3>(Professor Name)</h3>
+            <p class="role">Professor, Department of Information Management</p>
+            <p>Research focuses on human-computer interaction, intelligent services, and healthcare informatics.</p>
+            <a class="btn ghost" href="#professor">View Profile <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col" id="team">
+        <div class="team-head">
+          <div><p class="eyebrow">Our People</p><h2 style="font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.2vw,34px);color:var(--navy);margin:0;line-height:1.2">Meet Our Team</h2></div>
+          <div class="arrows">
+            <button type="button" id="prev" aria-label="上一組成員">←</button>
+            <button type="button" id="next" aria-label="下一組成員">→</button>
+          </div>
+        </div>
+        <div class="track" id="track" tabindex="0" aria-label="現任成員，可左右捲動">
+          <div class="person"><div class="avatar">林</div><div class="name">Hua Lin</div><div class="deg">Ph.D. Student</div></div>
+          <div class="person"><div class="avatar">王</div><div class="name">Ming Wang</div><div class="deg">M.S. Student</div></div>
+          <div class="person"><div class="avatar">張</div><div class="name">Yu-Ting Chang</div><div class="deg">M.S. Student</div></div>
+          <div class="person"><div class="avatar">黃</div><div class="name">Chih-Wei Huang</div><div class="deg">M.S. Student</div></div>
+          <div class="person"><div class="avatar">陳</div><div class="name">Mei Chen</div><div class="deg">M.S. Student</div></div>
+          <div class="person"><div class="avatar">劉</div><div class="name">Jia-Hao Liu</div><div class="deg">M.S. Student</div></div>
+          <div class="person"><div class="avatar">吳</div><div class="name">Pei-Shan Wu</div><div class="deg">M.S. Student</div></div>
+          <a class="person join" href="#team"><div class="avatar" aria-hidden="true">+</div><div class="name">Join us?</div><div class="deg">View Our Team!</div></a>
+        </div>
+        <div class="bar" id="bar" aria-hidden="true"><div class="thumb" id="thumb"></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><b>HCI Lab</b><span>Human-Centered AI Research</span></a>
+    <nav aria-label="頁尾導覽">
+      <a href="#top">Home</a><a href="#professor">Professor</a><a href="#team">People</a><a href="#research">Research Projects</a><a href="#news">News &amp; Awards</a>
+    </nav>
+    <div class="copy">
+      <span>© 2026 HCI Lab. All rights reserved.</span>
+      <span>Email: <span class="mail">lab@example.edu.tw</span></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Mobile menu
+  var toggle = document.getElementById('menu-toggle');
+  var menu = document.getElementById('menu');
+  toggle.addEventListener('click', function () {
+    var open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { menu.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+  });
+
+  // Language buttons (visual only in this mockup)
+  var zh = document.getElementById('lang-zh'), en = document.getElementById('lang-en');
+  [zh, en].forEach(function (b) {
+    b.addEventListener('click', function () {
+      zh.setAttribute('aria-pressed', b === zh ? 'true' : 'false');
+      en.setAttribute('aria-pressed', b === en ? 'true' : 'false');
+    });
+  });
+
+  // Team carousel
+  var track = document.getElementById('track');
+  var prev = document.getElementById('prev'), next = document.getElementById('next');
+  var bar = document.getElementById('bar'), thumb = document.getElementById('thumb');
+
+  function step() {
+    var item = track.querySelector('.person');
+    return item ? item.getBoundingClientRect().width + 16 : track.clientWidth;
+  }
+  function update() {
+    var max = track.scrollWidth - track.clientWidth;
+    var ratio = track.clientWidth / track.scrollWidth;
+    var scrollable = max > 2;
+    bar.hidden = !scrollable;
+    prev.disabled = !scrollable || track.scrollLeft <= 2;
+    next.disabled = !scrollable || track.scrollLeft >= max - 2;
+    var w = Math.max(ratio * 100, 12);
+    thumb.style.width = w + '%';
+    thumb.style.left = (max > 0 ? (track.scrollLeft / max) * (100 - w) : 0) + '%';
+  }
+  prev.addEventListener('click', function () { track.scrollBy({ left: -step() * 4 }); });
+  next.addEventListener('click', function () { track.scrollBy({ left: step() * 4 }); });
+  track.addEventListener('scroll', update, { passive: true });
+  track.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { track.scrollBy({ left: step() }); e.preventDefault(); }
+    if (e.key === 'ArrowLeft') { track.scrollBy({ left: -step() }); e.preventDefault(); }
+  });
+  window.addEventListener('resize', update);
+
+  // Drag or click the bar to scroll
+  function seek(clientX) {
+    var r = bar.getBoundingClientRect();
+    var p = Math.min(Math.max((clientX - r.left) / r.width, 0), 1);
+    track.style.scrollBehavior = 'auto';
+    track.scrollLeft = p * (track.scrollWidth - track.clientWidth);
+    track.style.scrollBehavior = '';
+  }
+  var dragging = false;
+  bar.addEventListener('pointerdown', function (e) { dragging = true; bar.setPointerCapture(e.pointerId); seek(e.clientX); });
+  bar.addEventListener('pointermove', function (e) { if (dragging) seek(e.clientX); });
+  bar.addEventListener('pointerup', function () { dragging = false; });
+  bar.addEventListener('pointercancel', function () { dragging = false; });
+
+  update();
+})();
+</script>

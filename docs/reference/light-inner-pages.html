@@ -1,0 +1,360 @@
+<title>HCI Lab Inner Pages</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: current dark nav and footer kept; inner pages get a light-blue title band and a white content area. */
+:root {
+  color-scheme: light;
+  /* 沿用目前網站的深色導覽列與 Footer */
+  --nav-bg: #171a20;
+  --nav-text: #e8eaed;
+  --nav-muted: #a1a9b4;
+  --nav-accent: #7899b8;
+  --nav-border: rgba(232, 234, 237, 0.12);
+  --footer-bg: #12151b;
+
+  /* 內頁：淺藍標題帶＋白色內容（取自淺色示意稿） */
+  --band-bg: #F4F7FA;
+  --band-rule: #DCE3EB;
+  --page-bg: #FFFFFF;
+  --navy: #1E3550;
+  --blue: #2D6497;
+  --blue-soft: #E7EFF7;
+  --ink: #1C2530;
+  --ink-2: #566474;
+  --rule: #DCE3EB;
+  --rule-strong: #C3CDD8;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+  --nav-height: 72px;
+  --container: 1160px;
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page-bg); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p, ul { margin: 0; }
+h1, h2, h3 { font-weight: 400; line-height: 1.25; }
+a { color: var(--blue); text-decoration: none; }
+a:hover { color: var(--navy); }
+button { font: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.container { max-width: calc(var(--container) + 64px); margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+
+/* ---------- 預覽用切換列（不屬於網站） ---------- */
+.preview-bar { background: #FFF6D9; color: #5C4A12; font-size: 13px; border-bottom: 1px solid #EBDDAF; }
+.preview-bar .container { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding-block: 8px; }
+.preview-bar button { border: 1px solid #D9C88E; background: #FFFDF4; color: #5C4A12; border-radius: 999px; padding: 2px 12px; font-size: 13px; }
+.preview-bar button[aria-pressed="true"] { background: #5C4A12; color: #FFF6D9; border-color: #5C4A12; }
+
+/* ---------- 導覽列（維持目前深色樣式） ---------- */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 120; background: var(--nav-bg); }
+.navbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 100; background: var(--nav-bg); border-bottom: 1px solid var(--nav-border); }
+.navbar-inner { display: flex; align-items: center; gap: 2rem; height: var(--nav-height); max-width: calc(var(--container) + 64px); margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+.brand { display: inline-flex; align-items: center; gap: .75rem; color: var(--nav-text); min-width: 0; }
+.brand:hover { color: var(--nav-text); }
+.brand svg { width: 36px; height: 36px; flex-shrink: 0; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
+.brand-name { font-size: 1.0625rem; font-weight: 500; }
+.brand-sub { font-size: .6875rem; color: var(--nav-muted); white-space: nowrap; }
+.nav-list { display: flex; gap: .25rem; margin: 0 auto; padding: 0; list-style: none; }
+.nav-link { position: relative; display: block; padding: .5rem .75rem; font-size: .9375rem; color: var(--nav-muted); white-space: nowrap; }
+.nav-link:hover, .nav-link.is-active { color: var(--nav-text); }
+.nav-link.is-active::after { content: ""; position: absolute; left: .75rem; right: .75rem; bottom: .1rem; height: 2px; border-radius: 1px; background: var(--nav-accent); }
+.tools { display: flex; align-items: center; gap: 1rem; font-size: .875rem; color: var(--nav-muted); }
+.tools .on { color: var(--nav-text); }
+.tools .sep { color: rgba(232,234,237,.3); margin: 0 .35rem; }
+.icon-btn { background: none; border: 0; color: var(--nav-muted); padding: 4px; display: grid; place-items: center; }
+.menu-toggle { display: none; }
+
+/* ---------- 內頁標題帶：淺藍 ---------- */
+.page-header { background: var(--band-bg); border-bottom: 1px solid var(--band-rule); padding-block: 3rem 2.5rem; }
+.eyebrow { margin-bottom: .5rem; font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+.page-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 300; color: var(--navy); }
+.page-lead { margin-top: .75rem; color: var(--ink-2); max-width: 40em; }
+
+/* ---------- 內容區：白色 ---------- */
+.content { padding-block: clamp(3rem, 7vw, 5rem); }
+
+/* 研究著作 */
+.filters { display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 16rem)); gap: 1rem; margin-bottom: 2.5rem; }
+.field-label { display: block; margin-bottom: .375rem; font-size: .875rem; color: var(--ink-2); }
+.select { width: 100%; padding: .5rem .75rem; border: 1px solid var(--rule-strong); border-radius: 6px; font: inherit; color: var(--ink); background: var(--page-bg); }
+.year-group + .year-group { margin-top: 2.5rem; }
+.year-title { padding-bottom: .5rem; font-size: 1.5rem; font-weight: 300; color: var(--navy); border-bottom: 2px solid var(--navy); }
+.publication { padding: 1.25rem 0; border-bottom: 1px solid var(--rule); }
+.publication-title { font-size: 1.0625rem; font-weight: 500; color: var(--ink); }
+.publication-authors { margin-top: .375rem; font-size: .9375rem; color: var(--ink); }
+.publication-source { margin-top: .25rem; font-size: .9375rem; color: var(--ink-2); }
+.publication-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: .875rem; }
+.badge { padding: .125rem .625rem; border-radius: 999px; font-size: .75rem; color: var(--ink-2); background: var(--band-bg); border: 1px solid var(--rule); }
+.pill-button { display: inline-flex; align-items: center; gap: .4rem; padding: .25rem .875rem; border: 1px solid var(--navy); border-radius: 999px; font-size: .8125rem; color: var(--navy); background: transparent; }
+.pill-button:hover { background: var(--blue-soft); color: var(--navy); }
+.empty { color: var(--ink-2); }
+
+/* 研究團隊 */
+.section-title { font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 300; color: var(--navy); }
+.people-section + .people-section { margin-top: clamp(3.5rem, 8vw, 6rem); }
+.people-group { margin-top: 2rem; }
+.people-group-title { margin-bottom: 1.25rem; font-size: .8125rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+.people-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 2rem 1.5rem; padding: 0; list-style: none; }
+.member-card { margin: 0; text-align: center; }
+.member-photo { width: 100%; aspect-ratio: 1; border-radius: 50%; border: 1px solid var(--rule); background: var(--blue-soft); display: grid; place-items: end center; overflow: hidden; }
+.member-photo svg { width: 100%; height: 100%; }
+.member-name { margin-top: .75rem; font-size: .9375rem; color: var(--ink); }
+.alumni-group + .alumni-group { margin-top: 2rem; }
+.alumni-class { margin-bottom: .75rem; font-size: 1.125rem; color: var(--navy); }
+.alumni-list { padding: 0; list-style: none; border-top: 1px solid var(--rule); }
+.alumni-list li { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; padding: .75rem 0; border-bottom: 1px solid var(--rule); }
+.alumni-name { min-width: 7rem; color: var(--ink); }
+.alumni-thesis { color: var(--ink-2); }
+
+/* ---------- Footer（維持目前深色樣式） ---------- */
+.site-footer { background: var(--footer-bg); border-top: 1px solid var(--nav-border); color: var(--nav-muted); }
+.footer-main { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem 2rem; padding-block: 2rem 1.5rem; }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; padding: 0; list-style: none; font-size: .875rem; }
+.footer-links li + li::before { content: "|"; margin: 0 .875rem; color: rgba(232,234,237,.3); }
+.footer-links a { color: var(--nav-muted); }
+.footer-links a:hover { color: var(--nav-text); }
+.footer-icon { color: var(--nav-muted); padding: 4px; display: grid; }
+.footer-copyright { padding: 0 var(--gutter-r) 1.75rem var(--gutter-l); font-size: .75rem; text-align: center; color: var(--nav-muted); }
+
+@media (max-width: 960px) {
+  .nav-list, .tools { display: none; }
+  .menu-toggle { display: grid; margin-left: auto; }
+}
+@media (max-width: 767.98px) {
+  .footer-main { flex-direction: column; text-align: center; }
+}
+</style>
+
+<div class="preview-bar">
+  <div class="container">
+    <span>預覽（不屬於網站）：切換內頁</span>
+    <button type="button" data-view="publications" aria-pressed="true">研究著作</button>
+    <button type="button" data-view="people" aria-pressed="false">研究團隊</button>
+  </div>
+</div>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="#" aria-label="HCI Lab">
+      <svg viewBox="0 0 48 48" fill="none" stroke="#9db6cf" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M24 4 41.3 14v20L24 44 6.7 34V14z"/><path d="M24 24 41.3 14M24 24 6.7 14M24 24v20"/><path d="M24 14.5 32.6 19.5v9.8L24 34.3l-8.6-5V19.5z" opacity=".55"/></svg>
+      <span class="brand-text"><span class="brand-name">HCI Lab</span><span class="brand-sub">Human-Centered AI Research</span></span>
+    </a>
+    <ul class="nav-list">
+      <li><a class="nav-link" href="#">首頁</a></li>
+      <li><a class="nav-link" id="nav-professor" href="#">指導教授</a></li>
+      <li><a class="nav-link" id="nav-people" href="#">研究團隊</a></li>
+      <li><a class="nav-link" href="#">研究計畫</a></li>
+      <li><a class="nav-link" href="#">消息與獲獎</a></li>
+    </ul>
+    <div class="tools">
+      <span><span class="on">中文</span><span class="sep">|</span>EN</span>
+      <button class="icon-btn" type="button" aria-label="搜尋功能即將推出">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+      </button>
+    </div>
+    <button class="icon-btn menu-toggle" type="button" aria-label="開關選單">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- 研究著作 -->
+  <div id="view-publications">
+    <header class="page-header">
+      <div class="container">
+        <p class="eyebrow">Professor</p>
+        <h1 class="page-title">研究著作</h1>
+      </div>
+    </header>
+    <div class="container content">
+      <div class="filters">
+        <div>
+          <label for="filter-year" class="field-label">年份</label>
+          <select id="filter-year" class="select">
+            <option value="">全部年份</option><option>2026</option><option>2025</option><option>2024</option>
+          </select>
+        </div>
+        <div>
+          <label for="filter-type" class="field-label">類型</label>
+          <select id="filter-type" class="select">
+            <option value="">全部類型</option><option value="期刊">期刊論文</option><option value="研討會">研討會論文</option><option value="專書">專書</option>
+          </select>
+        </div>
+      </div>
+      <div id="pub-list"></div>
+      <p class="empty" id="pub-empty" hidden>沒有符合條件的著作。</p>
+    </div>
+  </div>
+
+  <!-- 研究團隊 -->
+  <div id="view-people" hidden>
+    <header class="page-header">
+      <div class="container">
+        <p class="eyebrow">Our People</p>
+        <h1 class="page-title">研究團隊</h1>
+      </div>
+    </header>
+    <div class="container content">
+      <section class="people-section">
+        <h2 class="section-title">現任成員</h2>
+        <section class="people-group">
+          <h3 class="people-group-title">博士生</h3>
+          <ul class="people-grid" id="grid-phd"></ul>
+        </section>
+        <section class="people-group">
+          <h3 class="people-group-title">碩士生</h3>
+          <ul class="people-grid" id="grid-ms"></ul>
+        </section>
+      </section>
+      <section class="people-section">
+        <h2 class="section-title">歷屆畢業生</h2>
+        <div class="people-group" id="alumni"></div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-main">
+    <a class="brand" href="#" aria-label="HCI Lab">
+      <svg viewBox="0 0 48 48" fill="none" stroke="#9db6cf" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M24 4 41.3 14v20L24 44 6.7 34V14z"/><path d="M24 24 41.3 14M24 24 6.7 14M24 24v20"/><path d="M24 14.5 32.6 19.5v9.8L24 34.3l-8.6-5V19.5z" opacity=".55"/></svg>
+      <span class="brand-text"><span class="brand-name">HCI Lab</span><span class="brand-sub">Human-Centered AI Research</span></span>
+    </a>
+    <ul class="footer-links">
+      <li><a href="#">首頁</a></li><li><a href="#">指導教授</a></li><li><a href="#">研究團隊</a></li><li><a href="#">研究計畫</a></li><li><a href="#">消息與獲獎</a></li>
+    </ul>
+    <span class="footer-icon" title="lab@example.edu.tw" aria-label="寄信給我們">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
+    </span>
+  </div>
+  <p class="footer-copyright">© 2026 HCI Lab. All rights reserved.</p>
+</footer>
+
+<script>
+(function () {
+  // 測試資料（取自 repo 的 src/data，僅供預覽）
+  var PUBS = [
+    { year: 2026, type: '期刊', title: '測試論文標題一', authors: '測試作者甲、測試作者乙', venue: '測試期刊 A', details: 'Vol. 1, pp. 1-10', link: true, role: '第一作者', index: 'SCI Q1' },
+    { year: 2026, type: '研討會', title: '測試論文標題二', authors: '測試作者甲', venue: '測試研討會 B', details: 'pp. 11-12', link: true, role: '通訊作者', index: '' },
+    { year: 2025, type: '期刊', title: '測試論文標題三', authors: '測試作者乙、測試作者甲', venue: '測試期刊 C', details: '', link: true, role: '共同作者', index: 'SSCI' },
+    { year: 2025, type: '專書', title: '測試論文標題四（沒有連結）', authors: '測試作者甲', venue: '測試出版社', details: '', link: false, role: '作者', index: '' },
+    { year: 2024, type: '研討會', title: '測試論文標題五', authors: '測試作者丙、測試作者甲', venue: '測試研討會 D', details: '', link: true, role: '通訊作者', index: '' },
+    { year: 2024, type: '期刊', title: '測試論文標題六', authors: '測試作者甲', venue: '測試期刊 E', details: '', link: true, role: '第一作者', index: 'SCI Q2' }
+  ];
+  var TYPE_LABEL = { '期刊': '期刊論文', '研討會': '研討會論文', '專書': '專書' };
+  var PHD = ['測試成員甲', '測試成員辛'];
+  var MS = ['測試成員乙', '測試成員壬', '測試成員丙', '測試成員丁'];
+  var ALUMNI = [
+    { cls: '114 級', items: [{ name: '測試校友戊', thesis: '測試碩士論文題目一', link: true }] },
+    { cls: '113 級', items: [{ name: '測試校友己', thesis: '測試碩士論文題目二', link: false }] },
+    { cls: '級別未填', items: [{ name: '測試校友庚', thesis: '', link: false }] }
+  ];
+  var AVATAR = '<svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="46" r="22" fill="#B9CADB"/><path d="M20 120c0-26 18-42 40-42s40 16 40 42z" fill="#B9CADB"/></svg>';
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  // 研究著作
+  var yearSel = document.getElementById('filter-year');
+  var typeSel = document.getElementById('filter-type');
+  var list = document.getElementById('pub-list');
+  var empty = document.getElementById('pub-empty');
+  function renderPubs() {
+    list.textContent = '';
+    var rows = PUBS.filter(function (p) {
+      return (!yearSel.value || String(p.year) === yearSel.value) && (!typeSel.value || p.type === typeSel.value);
+    });
+    var years = [];
+    rows.forEach(function (p) { if (years.indexOf(p.year) < 0) years.push(p.year); });
+    years.forEach(function (y) {
+      var sec = el('section', 'year-group');
+      sec.appendChild(el('h2', 'year-title', String(y)));
+      rows.filter(function (p) { return p.year === y; }).forEach(function (p) {
+        var art = el('article', 'publication');
+        art.appendChild(el('h3', 'publication-title', p.title));
+        art.appendChild(el('p', 'publication-authors', p.authors));
+        var src = [p.venue, p.details].filter(Boolean).join(', ');
+        if (src) art.appendChild(el('p', 'publication-source', src));
+        var meta = el('div', 'publication-meta');
+        meta.appendChild(el('span', 'badge', TYPE_LABEL[p.type] || p.type));
+        if (p.role) meta.appendChild(el('span', 'badge', p.role));
+        if (p.index) meta.appendChild(el('span', 'badge', p.index));
+        if (p.link) {
+          var a = el('a', 'pill-button', '閱讀論文 →');
+          a.href = '#';
+          a.addEventListener('click', function (e) { e.preventDefault(); });
+          meta.appendChild(a);
+        }
+        art.appendChild(meta);
+        sec.appendChild(art);
+      });
+      list.appendChild(sec);
+    });
+    empty.hidden = rows.length > 0;
+  }
+  yearSel.addEventListener('change', renderPubs);
+  typeSel.addEventListener('change', renderPubs);
+  renderPubs();
+
+  // 研究團隊
+  function fillGrid(id, names) {
+    var ul = document.getElementById(id);
+    names.forEach(function (n) {
+      var li = el('li');
+      var fig = el('figure', 'member-card');
+      var ph = el('div', 'member-photo');
+      ph.innerHTML = AVATAR;
+      fig.appendChild(ph);
+      fig.appendChild(el('figcaption', 'member-name', n));
+      li.appendChild(fig);
+      ul.appendChild(li);
+    });
+  }
+  fillGrid('grid-phd', PHD);
+  fillGrid('grid-ms', MS);
+  var alumni = document.getElementById('alumni');
+  ALUMNI.forEach(function (g) {
+    var sec = el('section', 'alumni-group');
+    sec.appendChild(el('h3', 'alumni-class', g.cls));
+    var ul = el('ul', 'alumni-list');
+    g.items.forEach(function (m) {
+      var li = el('li');
+      li.appendChild(el('span', 'alumni-name', m.name));
+      if (m.thesis && m.link) {
+        var a = el('a', '', m.thesis); a.href = '#';
+        a.addEventListener('click', function (e) { e.preventDefault(); });
+        li.appendChild(a);
+      } else if (m.thesis) {
+        li.appendChild(el('span', 'alumni-thesis', m.thesis));
+      }
+      ul.appendChild(li);
+    });
+    sec.appendChild(ul);
+    alumni.appendChild(sec);
+  });
+
+  // 切換預覽頁面
+  var buttons = document.querySelectorAll('.preview-bar button');
+  var navProf = document.getElementById('nav-professor');
+  var navPeople = document.getElementById('nav-people');
+  function show(view) {
+    document.getElementById('view-publications').hidden = view !== 'publications';
+    document.getElementById('view-people').hidden = view !== 'people';
+    navProf.classList.toggle('is-active', view === 'publications');
+    navPeople.classList.toggle('is-active', view === 'people');
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.view === view ? 'true' : 'false'); });
+  }
+  buttons.forEach(function (b) { b.addEventListener('click', function () { show(b.dataset.view); }); });
+  document.querySelectorAll('a[href="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); });
+  });
+  show('publications');
+})();
+</script>
