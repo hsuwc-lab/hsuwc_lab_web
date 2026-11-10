@@ -60,6 +60,12 @@ const router = createRouter({
 
 // 每次換頁前，依網址的語言切換介面文字與 <html lang>
 // 網址沒有語言時（Intro、找不到頁面），改用瀏覽器語言
+router.beforeEach((to) => {
+  const lang = to.params.lang || preferredLanguage()
+  i18n.global.locale.value = lang
+  document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en'
+})
+
 // 換頁後，更新瀏覽器分頁標題
 router.afterEach((to) => {
   const lang = i18n.global.locale.value

@@ -15,7 +15,7 @@ const tabs = computed(() => [
 
 <template>
   <PageHeader
-    :title="t('nav.publications')"
+    :title="t('nav.profile')"
     eyebrow="Professor"
     :tabs="tabs"
   />

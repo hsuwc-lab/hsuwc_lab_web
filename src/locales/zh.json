@@ -11,6 +11,19 @@
   },
   "common": {
     "notFound": "找不到頁面",
-    "backHome": "回到首頁"
+    "backHome": "回到首頁",
+    "mainNav": "主要選單",
+    "footerNav": "頁尾選單",
+    "menu": "選單",
+    "language": "語言",
+    "searchSoon": "搜尋功能即將推出",
+    "email": "Email",
+    "address": "地址",
+    "openMap": "在 Google 地圖開啟"
+  },
+  "intro": {
+    "skip": "略過 Skip",
+    "explore": "Explore",
+    "researchAreas": "Research Areas"
   }
 }
