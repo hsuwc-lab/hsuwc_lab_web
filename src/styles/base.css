@@ -75,3 +75,9 @@ img {
   text-transform: uppercase;
   color: var(--color-blue);
 }
+
+/* 9. 內頁內容區 */
+.content {
+  padding-top: clamp(48px, 7vw, 80px);
+  padding-bottom: clamp(48px, 7vw, 80px);
+}

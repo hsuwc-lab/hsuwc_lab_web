@@ -1,0 +1,5 @@
+[
+  { "id": "hci", "order": 1, "title_zh": "人機互動", "title_en": "Human-Computer Interaction", "desc_zh": "設計直覺且友善的人與 AI 互動介面。", "desc_en": "Designing intuitive and inclusive human-AI interfaces.", "icon": "users" },
+  { "id": "intelligent-services", "order": 2, "title_zh": "智慧服務", "title_en": "Intelligent Services", "desc_zh": "打造日常生活中的智慧服務。", "desc_en": "Building intelligent services for everyday life.", "icon": "chip" },
+  { "id": "healthcare", "order": 3, "title_zh": "醫療資訊管理", "title_en": "Healthcare / Medical Informatics Management", "desc_zh": "以資料驅動醫療與健康照護。", "desc_en": "Advancing data-driven healthcare and medical informatics.", "icon": "heart" }
+]

@@ -1,0 +1,13 @@
+[
+  { "key": "lab_name", "value_zh": "人機共生與智慧服務研究室", "value_en": "Human-AI Symbiosis & Smart Services Lab" },
+  { "key": "lab_short_name", "value_zh": "", "value_en": "" },
+  { "key": "department", "value_zh": "○○大學 ○○學系", "value_en": "Department of ○○, ○○ University" },
+  { "key": "subtitle", "value_zh": "以人為本的 AI 研究", "value_en": "Human-Centered AI Research" },
+  { "key": "hero_intro", "value_zh": "連結人、科技與社會，打造更聰明、更健康的未來。", "value_en": "Bridging people, technology, and society for a smarter and healthier future." },
+  { "key": "research_intro", "value_zh": "探索人、科技與醫療交會處的創新解方。", "value_en": "Exploring innovative solutions at the intersection of human, technology, and healthcare." },
+  { "key": "email", "value_zh": "lab@example.edu.tw", "value_en": "" },
+  { "key": "address", "value_zh": "○○大學 ○○館 ○○○ 室", "value_en": "Room ○○○, ○○ Building, ○○ University" },
+  { "key": "map_url", "value_zh": "", "value_en": "" },
+  { "key": "join_text", "value_zh": "", "value_en": "" },
+  { "key": "copyright", "value_zh": "人機共生與智慧服務研究室", "value_en": "Human-AI Symbiosis & Smart Services Lab" }
+]

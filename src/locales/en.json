@@ -11,6 +11,19 @@
   },
   "common": {
     "notFound": "Page not found",
-    "backHome": "Back to Home"
+    "backHome": "Back to Home",
+    "mainNav": "Main navigation",
+    "footerNav": "Footer Navigation",
+    "menu": "Menu",
+    "language": "Language",
+    "searchSoon": "Search coming soon",
+    "email": "Email",
+    "address": "Address",
+    "openMap": "Open in Google Maps"
+  },
+  "intro": {
+    "skip": "Skip",
+    "explore": "Explore",
+    "researchAreas": "Research Areas"
   }
 }
