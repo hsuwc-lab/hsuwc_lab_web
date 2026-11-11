@@ -148,7 +148,8 @@ watch(() => route.fullPath, () => {
 }
 .nav-inner { display: flex; align-items: center; gap: 24px; min-height: var(--nav-height); }
 
-.brand { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; text-decoration: none; }
+/* 品牌區固定寬度，切換語言時選單才不會被推動；放不下時折成兩行 */
+.brand { display: flex; flex: 0 0 260px; flex-direction: column; min-width: 0; line-height: 1.25; text-decoration: none; }
 .brand-name { font-family: var(--font-display); font-size: 1.2rem; color: #fff; }
 .brand-sub { font-size: 0.72rem; color: rgba(255, 255, 255, 0.7); }
 
@@ -157,7 +158,9 @@ watch(() => route.fullPath, () => {
 .menu-item { position: relative; }
 .menu-link {
   display: block;
-  padding: 8px 12px;
+  width: 6rem;          /* 每個選單固定寬度，中英文切換時位置不變 */
+  padding: 8px 0;
+  text-align: center;
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.8);  /* 比純白淡一點，讓目前頁面的純白更明顯 */
   text-decoration: none;
@@ -230,6 +233,7 @@ watch(() => route.fullPath, () => {
   }
   .menu.is-open { display: flex; }
   .menu-list { flex-direction: column; margin: 0; }
+  .menu-link { width: auto; padding: 8px 12px; text-align: left; }
   .submenu { display: block; position: static; padding: 0 0 0 16px; border: 0; }
   /* 手機版子選單直接放在深藍底上 */
   .submenu { background: none; }

@@ -6,8 +6,8 @@
     "column": "Column",
     "publications": "Publications",
     "people": "People",
-    "projects": "Research Projects",
-    "news": "News & Awards"
+    "projects": "Projects",
+    "news": "News"
   },
   "common": {
     "notFound": "Page not found",
