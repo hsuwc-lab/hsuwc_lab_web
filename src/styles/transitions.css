@@ -1,0 +1,68 @@
+/* 換頁過場：Intro → 首頁的「延伸的細線」
+   App.vue 只在從 Intro 進入首頁時套用 intro-to-home，其他換頁沒有過場
+   只動 opacity、transform、clip-path，不觸發版面重排；系統開啟「減少動態效果」時不播放
+   時間軸（共 1 秒）：
+     離開 Intro 0～0.65 秒：文字淡出上移 → 分隔線往左右延伸到整個畫面、變成淺灰 → 淡出
+     進入首頁 0.65～1 秒：導覽列與內容淡入，Hero 內容由下往上 8px 定位 */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* 過場期間底色維持淺藍灰，讓 Intro 與 Hero 看起來是同一張紙，不會閃白 */
+  body:has(.intro-to-home-leave-active, .intro-to-home-enter-active) {
+    background: var(--color-bg-soft);
+  }
+
+  /* ── 離開 Intro（0.65 秒）── */
+
+  /* Vue 依根元素的動畫長度決定何時換頁，這個動畫只用來計時 */
+  .intro-to-home-leave-active {
+    overflow: hidden;   /* 延伸的分隔線不會撐出水平捲軸 */
+    animation: intro-hold 650ms linear;
+  }
+
+  /* 階段一：分隔線以外的內容淡出並往上移 */
+  .intro-to-home-leave-active :is(.eyebrow, .lab-name, .lab-name-zh, .areas-label, .areas, .explore, .foot) {
+    transition: opacity 350ms ease-out, transform 350ms ease-out;
+  }
+  .intro-to-home-leave-to :is(.eyebrow, .lab-name, .lab-name-zh, .areas-label, .areas, .explore, .foot) {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  /* 階段二：分隔線先放寬到整個畫面，再用 clip-path 裁回原本的 64px，從中央往左右展開
+     多加 .intro 提高權重，才能蓋過 IntroView 裡 .rule 原本的寬度與 margin */
+  .intro.intro-to-home-leave-active .rule {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    animation: intro-rule-extend 650ms ease-out both;
+  }
+
+  /* ── 進入首頁（0.35 秒）── */
+
+  .intro-to-home-enter-active { transition: opacity 350ms ease-out; }
+  .intro-to-home-enter-from { opacity: 0; }
+
+  .intro-to-home-enter-active .hero-inner { transition: transform 350ms ease-out; }
+  .intro-to-home-enter-from .hero-inner { transform: translateY(8px); }
+}
+
+@keyframes intro-hold {
+  to { opacity: 1; }
+}
+
+/* 0～170ms 停住；170～550ms 展開並由深藍轉淺灰；550～650ms 淡出 */
+@keyframes intro-rule-extend {
+  0%, 27% {
+    clip-path: inset(0 calc(50% - 32px));
+    background: var(--color-navy);
+  }
+  85% {
+    clip-path: inset(0 0);
+    background: var(--color-rule);
+    opacity: 1;
+  }
+  100% {
+    clip-path: inset(0 0);
+    background: var(--color-rule);
+    opacity: 0;
+  }
+}

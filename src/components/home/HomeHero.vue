@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import research from '../../data/research.json'
 import { getProfessor, getSetting, pick } from '../../utils/content.js'
+import ScrollHint from './ScrollHint.vue'
 
 const { t, locale } = useI18n()
 const setting = (key) => getSetting(key, locale.value)
@@ -58,6 +59,7 @@ const focusText = computed(() =>
         </div>
       </dl>
     </div>
+    <ScrollHint to="#research" />
   </section>
 </template>
 

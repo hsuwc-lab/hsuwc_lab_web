@@ -22,12 +22,12 @@
     "openMap": "在 Google 地圖開啟"
   },
   "intro": {
-    "skip": "略過 Skip",
     "explore": "Explore",
     "researchAreas": "Research Areas"
   },
   "home": {
   "exploreResearch": "探索研究領域",
+  "nextSection": "捲動到下一個區段",
   "latestNews": "最新消息",
   "pi": "主持人",
   "focus": "研究方向",

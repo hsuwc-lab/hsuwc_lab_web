@@ -3,6 +3,7 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { getCurrentMembers, getProfessor, getProfessorRow } from '../../utils/content.js'
 import defaultAvatar from '../../assets/default-avatar.svg'
+import ScrollHint from './ScrollHint.vue'
 
 const { t, locale } = useI18n()
 const base = import.meta.env.BASE_URL
@@ -97,7 +98,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section id="team" class="section">
     <div class="container duo">
       <!-- 左欄：指導教授 -->
       <div class="col">
@@ -167,6 +168,7 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </div>
+    <ScrollHint to="#news" />
   </section>
 </template>
 

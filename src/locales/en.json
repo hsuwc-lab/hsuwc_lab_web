@@ -22,12 +22,12 @@
     "openMap": "Open in Google Maps"
   },
   "intro": {
-    "skip": "Skip",
     "explore": "Explore",
     "researchAreas": "Research Areas"
   },
   "home": {
   "exploreResearch": "Explore Our Research",
+  "nextSection": "Scroll to next section",
   "latestNews": "Latest News",
   "pi": "Principal Invetigator",
   "focus": "Research Focus",

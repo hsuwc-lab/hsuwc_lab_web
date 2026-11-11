@@ -97,7 +97,7 @@ docs/reference/   視覺參考稿
 
 - 全螢幕、淺藍灰底（`--color-bg-soft`），內容置中，不使用 MainLayout
 - 由上而下：系所小標籤（settings `department`）、實驗室英文全名（Georgia 大字）、中文全名、短分隔線、Research Areas 小標籤與三大研究領域（三欄，細線分隔）、Explore 按鈕 → 首頁
-- 右上角不顯眼的「略過 Skip」；底部一行學校與系所
+- 底部一行學校與系所（不設「略過 Skip」，進入首頁只靠 Explore 按鈕）
 - **只在第一次造訪 `/` 時自動顯示**（以 localStorage 記錄；讀寫包 try/catch，失敗時當作已看過，不要卡住使用者）
 - 從外部連結直接進入內頁時不經過 Intro
 - **導覽列與 Footer 的 Logo 點擊都會回到 `/intro`**，讓使用者隨時能再看到 Intro

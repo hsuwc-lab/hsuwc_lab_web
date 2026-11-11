@@ -123,6 +123,8 @@ img {
     justify-content: center;                    /* 內容垂直置中 */
     min-height: calc(100vh - var(--nav-height));
     scroll-snap-align: start;                   /* 對齊區塊開頭 */
+    scroll-snap-stop: always;                   /* 降低靈敏度：一次快速捲動最多只前進一個區塊，不會跳過 */
+    position: relative;                         /* 讓區塊底部的往下提示（ScrollHint）以區塊定位 */
   }
   .snap-page main section > .container { width: 100%; }
 

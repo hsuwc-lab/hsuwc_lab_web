@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 import research from '../../data/research.json'
 import { getSetting, pick } from '../../utils/content.js'
 import ResearchIcon from '../ResearchIcon.vue'
+import ScrollHint from './ScrollHint.vue'
 
 const { t, locale } = useI18n()
 
@@ -44,6 +45,7 @@ const areas = computed(() =>
         </RouterLink>
       </div>
     </div>
+    <ScrollHint to="#team" />
   </section>
 </template>
 

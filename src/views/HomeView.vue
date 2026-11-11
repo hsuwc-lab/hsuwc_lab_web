@@ -92,7 +92,7 @@ onBeforeUnmount(() => {
 /* 只在電腦版、且使用者沒有開啟「減少動態效果」時啟用 */
 @media (min-width: 961px) and (min-height: 640px) and (prefers-reduced-motion: no-preference) {
   /* 第一個停靠點：Hero 整頁 */
-  .home-stage { scroll-snap-align: start; }
+  .home-stage { scroll-snap-align: start; scroll-snap-stop: always; }   /* 不可被快速捲動跳過 */
 
   @supports (animation-timeline: view()) {
     .home-stage {

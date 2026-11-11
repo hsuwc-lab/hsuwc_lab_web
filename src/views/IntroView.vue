@@ -21,8 +21,6 @@ onMounted(markIntroSeen)
 
 <template>
   <section class="intro">
-    <RouterLink :to="homeLink" class="skip">{{ t('intro.skip') }} →</RouterLink>
-
     <div class="intro-inner">
       <p class="eyebrow">{{ getSetting('department', 'en') }}</p>
       <h1 class="lab-name">{{ getSetting('lab_name', 'en') }}</h1>
@@ -53,16 +51,6 @@ onMounted(markIntroSeen)
   background: var(--color-bg-soft);
 }
 .intro-inner { width: 100%; max-width: 760px; }
-
-.skip {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  text-decoration: none;
-}
-.skip:hover { color: var(--color-navy); text-decoration: underline; }
 
 .lab-name { font-size: clamp(2.5rem, 7vw, 4.5rem); line-height: 1.1; }
 .lab-name-zh { margin-top: 14px; font-size: clamp(1.1rem, 2.4vw, 1.4rem); letter-spacing: 0.12em; }
