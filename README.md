@@ -1,5 +1,7 @@
 # 人機共生與智慧服務研究室網站
 
+網址：https://hsuwc-lab.github.io/hsuwc_lab_web/
+
 Human-AI Symbiosis & Smart Services Lab — Official Website
 
 實驗室官方網站，提供教授介紹、研究著作、專欄、研究團隊、研究計畫與最新消息，支援中英文。
