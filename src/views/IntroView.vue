@@ -100,6 +100,12 @@ onMounted(markIntroSeen)
 
 .foot { position: absolute; bottom: 20px; left: 0; right: 0; font-size: 0.8rem; color: var(--color-text-muted); }
 
+/* 電腦版：英文大標題維持一行，字級跟著視窗寬度縮放 */
+@media (min-width: 961px) {
+  .intro-inner { max-width: 1200px; }
+  .lab-name { white-space: nowrap; font-size: clamp(2.25rem, 3.2vw, 3.5rem); }
+}
+
 @media (max-width: 640px) {
   .areas { grid-template-columns: 1fr; max-width: 320px; }
   .areas li { padding: 10px 0; }
