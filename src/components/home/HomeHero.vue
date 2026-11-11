@@ -28,7 +28,7 @@ const focusText = computed(() =>
       <div class="hero-main">
         <h1 class="hero-title">{{ setting('lab_name') }}</h1>
         <p class="hero-sub">{{ getSetting('lab_name', otherLang) }}</p>
-        <div class="hero-buttons">
+        <div class="hero-buttons hero-fade">
           <RouterLink :to="{ hash: '#research' }" class="btn btn-primary">
             {{ t('home.exploreResearch') }} <span aria-hidden="true">→</span>
           </RouterLink>
@@ -38,7 +38,7 @@ const focusText = computed(() =>
         </div>
       </div>
 
-      <dl class="facts">
+      <dl class="facts hero-fade">
         <div>
           <dt>{{ t('home.pi') }}</dt>
           <dd>{{ piText }}</dd>
@@ -80,6 +80,45 @@ const focusText = computed(() =>
 .facts dt { font-size: calc(0.85rem * var(--home-scale)); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted); }
 .facts dd { margin: 4px 0 0; font-size: calc(1.1rem * var(--home-scale)); line-height: 1.5;}
 .map-link { margin-left: 6px; font-size: calc(0.85rem * var(--home-scale)); }
+
+/* 電腦版收合效果：--progress 由 HomeView 提供（0 = 整頁，1 = 收合完成）
+   只用 transform 與 opacity，捲動時不會觸發重排 */
+@media (min-width: 961px) and (min-height: 640px) and (prefers-reduced-motion: no-preference) {
+  /* Hero 黏在導覽列下方不動，研究領域從下方蓋上來，看起來就像 Hero 在縮短 */
+  .hero {
+    position: sticky;
+    top: var(--nav-height);
+    scroll-snap-align: none;   /* 停靠點改由外層舞台負責 */
+    border-bottom: 0;          /* 分隔線改由研究領域上緣提供，避免兩條線疊在一起 */
+  }
+  .hero-inner { align-items: center; }
+
+  /* 名稱區：往上移到上方 1/3 的中央，並縮小到 60%
+     往上移的距離 = 畫面高度的 1/3，再補回按鈕淡出後留下的空間（約 20px） */
+  .hero-main {
+    transform-origin: left center;
+    transform:
+      translateY(calc(var(--progress) * (20px - (100vh - var(--nav-height)) / 3)))
+      scale(calc(1 - 0.4 * var(--progress)));
+  }
+
+  /* 按鈕與右欄資訊：在前 40% 的進度內淡出 */
+  .hero-fade { opacity: max(0, 1 - 2.5 * var(--progress)); }
+  .facts { transform: translateY(calc(var(--progress) * -24px)); }
+
+  /* 淡出後設為 hidden，滑鼠點不到、鍵盤 Tab 也不會停在看不見的按鈕上 */
+  @supports (animation-timeline: view()) {
+    .hero-fade {
+      animation: hero-hide linear both;
+      animation-timeline: --stage;
+      animation-range: contain 0% contain 40%;
+    }
+  }
+  .home-stage[data-collapsed] .hero-fade { visibility: hidden; }  /* JS 備援 */
+}
+@keyframes hero-hide {
+  to { visibility: hidden; }
+}
 
 /* 960px 以下：單欄，右欄移到下方 */
 @media (max-width: 960px) {

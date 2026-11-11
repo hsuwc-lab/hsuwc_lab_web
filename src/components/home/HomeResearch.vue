@@ -65,6 +65,22 @@ const areas = computed(() =>
 .area:hover .area-title { color: var(--color-blue); }
 .area:hover .area-more { text-decoration: underline; }
 
+/* 電腦版收合效果：研究領域從下方蓋到 Hero 上，收合完成時佔畫面下方 2/3 */
+@media (min-width: 961px) and (min-height: 640px) and (prefers-reduced-motion: no-preference) {
+  .section {
+    position: relative;
+    z-index: 1;                              /* 疊在黏住的 Hero 上面 */
+    min-height: calc((100vh - var(--nav-height)) * 2 / 3);
+    padding-top: clamp(24px, 4vh, 48px);
+    padding-bottom: clamp(24px, 4vh, 48px);
+    background: var(--color-bg);             /* 不透明，才蓋得住 Hero */
+    border-top: 1px solid var(--color-rule);
+    /* 第二個停靠點：研究領域底部對齊畫面底部 = 收合完成
+       內容比 2/3 高時區塊會自動長高，卡片仍完整顯示，只是 Hero 留下的空間少一點 */
+    scroll-snap-align: end;
+  }
+}
+
 @media (max-width: 720px) {
   .areas { grid-template-columns: minmax(0, 1fr); }
   .area, .area + .area { padding: 24px 0; border-left: 0; }

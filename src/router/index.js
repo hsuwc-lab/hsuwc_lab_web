@@ -54,7 +54,15 @@ const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
     if (to.name === from.name && to.params.lang !== from.params.lang) return false
     if (savedPosition) return savedPosition          // 按上一頁：回到原本位置
-    if (to.hash) return { el: to.hash, top: 80 }      // 網址有 #join：捲到該區塊
+    if (to.hash) {
+      // 以底部對齊為停靠點的區塊（首頁收合效果中的研究領域）：捲到底部貼齊畫面底部
+      const el = document.querySelector(to.hash)
+      if (el && getComputedStyle(el).scrollSnapAlign.includes('end')) {
+        el.scrollIntoView({ block: 'end' })
+        return false
+      }
+      return { el: to.hash, top: 80 }                 // 網址有 #join：捲到該區塊
+    }
     return { top: 0 }                                 // 其他：回到頁面頂端
   },
 })
