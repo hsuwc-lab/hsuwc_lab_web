@@ -25,5 +25,25 @@
     "skip": "略過 Skip",
     "explore": "Explore",
     "researchAreas": "Research Areas"
-  }
+  },
+  "home": {
+  "exploreResearch": "探索研究領域",
+  "latestNews": "最新消息",
+  "pi": "主持人",
+  "focus": "研究方向",
+  "location": "地點",
+  "researchAreas": "研究領域",
+  "relatedProjects": "相關計畫",
+  "meetProfessor": "指導教授",
+  "viewProfile": "View Profile",
+  "meetTeam": "研究團隊",
+  "joinUs": "Join us?",
+  "viewTeam": "View Our Team!",
+  "teamList": "現任成員，可左右捲動",
+  "previous": "上一組成員",
+  "next": "下一組成員",
+  "viewAll": "View All"
+},
+"degrees": { "phd": "博士生", "ms": "碩士生", "exchange": "交換生", "undergrad": "專題生", "alumni": "{year} 級校友" },
+"categories": { "News": "消息", "Event": "活動", "Award": "獲獎", "Publication": "論文發表" }
 }

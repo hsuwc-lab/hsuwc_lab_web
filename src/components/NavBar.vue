@@ -143,14 +143,14 @@ watch(() => route.fullPath, () => {
   position: sticky;   /* 捲動時固定在頂端 */
   top: 0;
   z-index: 50;        /* 疊在其他內容上面 */
-  background: var(--color-bg);
-  border-bottom: 1px solid var(--color-rule);
+  background: var(--color-navy);  /* 和 Footer 同色 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 .nav-inner { display: flex; align-items: center; gap: 24px; min-height: var(--nav-height); }
 
 .brand { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; text-decoration: none; }
-.brand-name { font-family: var(--font-display); font-size: 1.2rem; color: var(--color-navy); }
-.brand-sub { font-size: 0.72rem; color: var(--color-text-muted); }
+.brand-name { font-family: var(--font-display); font-size: 1.2rem; color: #fff; }
+.brand-sub { font-size: 0.72rem; color: rgba(255, 255, 255, 0.7); }
 
 .menu { display: flex; flex: 1; align-items: center; gap: 24px; }
 .menu-list { display: flex; gap: 4px; margin: 0 auto; padding: 0; list-style: none; }
@@ -159,12 +159,12 @@ watch(() => route.fullPath, () => {
   display: block;
   padding: 8px 12px;
   font-size: 0.95rem;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.8);  /* 比純白淡一點，讓目前頁面的純白更明顯 */
   text-decoration: none;
   border-bottom: 2px solid transparent;
 }
-.menu-link:hover { color: var(--color-navy); }
-.menu-link.is-active { color: var(--color-navy); font-weight: 600; border-bottom-color: var(--color-blue); }
+.menu-link:hover { color: #fff; }
+.menu-link.is-active { color: #fff; font-weight: 600; border-bottom-color: #fff; }
 
 /* 下拉選單：平常隱藏，滑鼠移入或鍵盤聚焦時顯示 */
 .submenu {
@@ -185,18 +185,18 @@ watch(() => route.fullPath, () => {
 .submenu-link { display: block; padding: 6px 16px; font-size: 0.9rem; color: var(--color-text); text-decoration: none; }
 .submenu-link:hover { background: var(--color-blue-soft); }
 
-.tools { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: var(--color-rule); }
-.lang { color: var(--color-text-muted); text-decoration: none; }
-.lang.is-current { color: var(--color-navy); font-weight: 600; }
+.tools { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: rgba(255, 255, 255, 0.4); }
+.lang { color: rgba(255, 255, 255, 0.75); text-decoration: none; }
+.lang.is-current { color: #fff; font-weight: 600; }
 .search {
   display: grid;
   place-items: center;
   width: 34px;
   height: 34px;
   margin-left: 8px;
-  color: var(--color-navy);
+  color: #fff;
   background: none;
-  border: 1px solid var(--color-rule);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 50%;
 }
 
@@ -211,9 +211,9 @@ watch(() => route.fullPath, () => {
     height: 40px;
     margin-left: auto;
     font-size: 1.2rem;
-    color: var(--color-navy);
+    color: #fff;
     background: none;
-    border: 1px solid var(--color-rule);
+    border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: var(--radius);
   }
   .menu {
@@ -225,12 +225,16 @@ watch(() => route.fullPath, () => {
     flex-direction: column;
     align-items: stretch;
     padding: 8px 16px 16px;
-    background: var(--color-bg);
-    border-bottom: 1px solid var(--color-rule);
+    background: var(--color-navy);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
   .menu.is-open { display: flex; }
   .menu-list { flex-direction: column; margin: 0; }
   .submenu { display: block; position: static; padding: 0 0 0 16px; border: 0; }
+  /* 手機版子選單直接放在深藍底上 */
+  .submenu { background: none; }
+  .submenu-link { color: rgba(255, 255, 255, 0.8); }
+  .submenu-link:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
   .tools { padding: 8px 12px; }
 }
 </style>

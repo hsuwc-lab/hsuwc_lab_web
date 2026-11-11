@@ -6,7 +6,6 @@ import { getSetting, pick } from '../utils/content.js'
 import { markIntroSeen } from '../utils/introSeen.js'
 
 const { t, locale } = useI18n()
-const setting = (key) => getSetting(key, locale.value)
 
 const homeLink = computed(() => ({ name: 'home', params: { lang: locale.value } }))
 
@@ -28,7 +27,6 @@ onMounted(markIntroSeen)
       <p class="eyebrow">{{ getSetting('department', 'en') }}</p>
       <h1 class="lab-name">{{ getSetting('lab_name', 'en') }}</h1>
       <p class="lab-name-zh">{{ getSetting('lab_name', 'zh') }}</p>
-      <p class="subtitle">{{ setting('subtitle') }}</p>
 
       <hr class="rule" />
 
@@ -68,7 +66,6 @@ onMounted(markIntroSeen)
 
 .lab-name { font-size: clamp(2.5rem, 7vw, 4.5rem); line-height: 1.1; }
 .lab-name-zh { margin-top: 14px; font-size: clamp(1.1rem, 2.4vw, 1.4rem); letter-spacing: 0.12em; }
-.subtitle { margin-top: 6px; font-family: var(--font-display); font-style: italic; font-size: 1.25rem; color: var(--color-blue); }
 
 .rule { width: 64px; height: 2px; margin: 32px auto; background: var(--color-navy); border: 0; }
 

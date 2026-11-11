@@ -1,0 +1,12 @@
+[
+  { "id": "m-2025-chen", "name_zh": "陳小美", "name_en": "Mei Chen", "status": "current", "degree": "ms", "entry_year": 2025, "class_of": null, "photo": "", "thesis_title_zh": "", "thesis_title_en": "", "thesis_url": "", "show": true },
+  { "id": "m-2023-lin", "name_zh": "林小華", "name_en": "Hua Lin", "status": "current", "degree": "phd", "entry_year": 2023, "class_of": null, "photo": "", "thesis_title_zh": "", "thesis_title_en": "", "thesis_url": "", "show": true },
+  { "id": "m-2024-wang", "name_zh": "王小明", "name_en": "Ming Wang", "status": "current", "degree": "ms", "entry_year": 2024, "class_of": null, "photo": "", "thesis_title_zh": "", "thesis_title_en": "", "thesis_url": "", "show": true },
+  { "id": "m-2024-chang", "name_zh": "張雅婷", "name_en": "Ya-Ting Chang", "status": "current", "degree": "ms", "entry_year": 2024, "class_of": null, "photo": "", "thesis_title_zh": "", "thesis_title_en": "", "thesis_url": "", "show": true },
+  { "id": "m-2025-liu", "name_zh": "劉家豪", "name_en": "Jia-Hao Liu", "status": "current", "degree": "ms", "entry_year": 2025, "class_of": null, "photo": "", "thesis_title_zh": "", "thesis_title_en": "", "thesis_url": "", "show": true },
+  { "id": "m-2025-wu", "name_zh": "吳佩珊", "name_en": "", "status": "current", "degree": "ms", "entry_year": 2025, "class_of": null, "photo": "", "thesis_title_zh": "", "thesis_title_en": "", "thesis_url": "", "show": true },
+  { "id": "m-2025-tsai", "name_zh": "蔡宜蓁", "name_en": "Yi-Jun Tsai", "status": "current", "degree": "undergrad", "entry_year": 2025, "class_of": null, "photo": "", "thesis_title_zh": "", "thesis_title_en": "", "thesis_url": "", "show": true },
+  { "id": "m-2025-kim", "name_zh": "金民俊", "name_en": "Min-jun Kim", "status": "current", "degree": "exchange", "entry_year": 2025, "class_of": null, "photo": "", "thesis_title_zh": "", "thesis_title_en": "", "thesis_url": "", "show": true },
+  { "id": "m-2025-hidden", "name_zh": "隱藏測試（不應出現）", "name_en": "Hidden", "status": "current", "degree": "ms", "entry_year": 2025, "class_of": null, "photo": "", "thesis_title_zh": "", "thesis_title_en": "", "thesis_url": "", "show": false },
+  { "id": "m-2022-lee", "name_zh": "李大同", "name_en": "Ta-Tung Lee", "status": "alumni", "degree": "ms", "entry_year": 2022, "class_of": 113, "photo": "", "thesis_title_zh": "（碩士論文中文題目）", "thesis_title_en": "(Thesis title)", "thesis_url": "", "show": true }
+]

@@ -25,5 +25,25 @@
     "skip": "Skip",
     "explore": "Explore",
     "researchAreas": "Research Areas"
-  }
+  },
+  "home": {
+  "exploreResearch": "Explore Our Research",
+  "latestNews": "Latest News",
+  "pi": "Principal Invetigator",
+  "focus": "Research Focus",
+  "location": "Location",
+  "researchAreas": "Research Areas",
+  "relatedProjects": "Related Projects",
+  "meetProfessor": "Meet Our Professor",
+  "viewProfile": "View Profile",
+  "meetTeam": "Meet Our Team",
+  "joinUs": "Join us?",
+  "viewTeam": "View Our Team!",
+  "teamList": "Current members, scroll sideways",
+  "previous": "Previous members",
+  "next": "Next members",
+  "viewAll": "View All"
+},
+"degrees": { "phd": "Ph.D. Student", "ms": "M.S. Student", "exchange": "Exchange Student", "undergrad": "Undergraduate Researcher", "alumni": "Alumni, Class of {year}" },
+"categories": { "News": "News", "Event": "Event", "Award": "Award", "Publication": "Publication" }
 }

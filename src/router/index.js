@@ -52,6 +52,7 @@ const router = createRouter({
   routes,
   // 換頁時的捲動位置
   scrollBehavior(to, from, savedPosition) {
+    if (to.name === from.name && to.params.lang !== from.params.lang) return false
     if (savedPosition) return savedPosition          // 按上一頁：回到原本位置
     if (to.hash) return { el: to.hash, top: 80 }      // 網址有 #join：捲到該區塊
     return { top: 0 }                                 // 其他：回到頁面頂端

@@ -1,0 +1,6 @@
+[
+  { "section": "基本資料", "key": "name", "order": null, "period": "", "text_zh": "許文錦", "text_en": "Wen-Chin Hsu" },
+  { "section": "基本資料", "key": "title", "order": null, "period": "", "text_zh": "教授", "text_en": "Professor" },
+  { "section": "基本資料", "key": "photo", "order": null, "period": "", "text_zh": "", "text_en": "" },
+  { "section": "基本資料", "key": "short_bio", "order": null, "period": "", "text_zh": "研究聚焦於人機互動、智慧服務與醫療資訊管理。", "text_en": "Research focuses on human-computer interaction, intelligent services, and healthcare informatics." }
+]

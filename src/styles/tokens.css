@@ -38,4 +38,5 @@
   --container-width: 1120px;    /* 內容最大寬度 */
   --nav-height: 68px;           /* 導覽列高度 */
   --radius: 4px;                /* 按鈕、照片的圓角 */
+  --home-scale: 1;              /* 首頁放大倍率：大螢幕時由 base.css 調大，手機與內頁維持 1 */
 }
