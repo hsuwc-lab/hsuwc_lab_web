@@ -19,18 +19,17 @@
     "searchSoon": "搜尋功能即將推出",
     "email": "Email",
     "address": "地址",
-    "openMap": "在 Google 地圖開啟"
+    "openMap": "在 Google 地圖開啟",
+    "profName": "Prof. {name}"
   },
   "intro": {
-    "explore": "Explore",
-    "researchAreas": "Research Areas"
+    "explore": "Explore"
   },
   "home": {
   "exploreResearch": "探索研究領域",
   "nextSection": "捲動到下一個區段",
   "latestNews": "最新消息",
   "pi": "主持人",
-  "focus": "研究方向",
   "location": "地點",
   "researchAreas": "研究領域",
   "relatedProjects": "相關計畫",

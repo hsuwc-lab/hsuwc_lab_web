@@ -1,20 +1,15 @@
 <script setup>
 import { computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import research from '../data/research.json'
-import { getSetting, pick } from '../utils/content.js'
+import { getSetting, getProfessorRow } from '../utils/content.js'
 import { markIntroSeen } from '../utils/introSeen.js'
 
 const { t, locale } = useI18n()
 
 const homeLink = computed(() => ({ name: 'home', params: { lang: locale.value } }))
 
-// 研究領域依 order 排序
-const areas = computed(() =>
-  [...research]
-    .sort((a, b) => a.order - b.order)
-    .map((area) => ({ id: area.id, title: pick(area, 'title', locale.value) })),
-)
+// 教授英文姓名；沒有英文名時不顯示（不以中文代替）
+const professorName = getProfessorRow('name')?.text_en || ''
 
 onMounted(markIntroSeen)
 </script>
@@ -28,10 +23,7 @@ onMounted(markIntroSeen)
 
       <hr class="rule" />
 
-      <p class="areas-label">{{ t('intro.researchAreas') }}</p>
-      <ul class="areas">
-        <li v-for="area in areas" :key="area.id">{{ area.title }}</li>
-      </ul>
+      <p v-if="professorName" class="professor">{{ t('common.profName', { name: professorName }) }}</p>
 
       <RouterLink :to="homeLink" class="explore">{{ t('intro.explore') }} →</RouterLink>
     </div>
@@ -57,23 +49,14 @@ onMounted(markIntroSeen)
 
 .rule { width: 64px; height: 2px; margin: 32px auto; background: var(--color-navy); border: 0; }
 
-.areas-label {
-  margin-bottom: 14px;
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
+.professor {
+  margin-bottom: 40px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+  letter-spacing: 0.02em;
+  color: var(--color-blue);
 }
-.areas {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  max-width: 680px;
-  margin: 0 auto 40px;
-  padding: 0;
-  list-style: none;
-}
-.areas li { padding: 6px 16px; line-height: 1.45; }
-.areas li + li { border-left: 1px solid var(--color-rule); }
 
 .explore {
   display: inline-block;
@@ -92,11 +75,5 @@ onMounted(markIntroSeen)
 @media (min-width: 961px) {
   .intro-inner { max-width: 1200px; }
   .lab-name { white-space: nowrap; font-size: clamp(2.25rem, 3.2vw, 3.5rem); }
-}
-
-@media (max-width: 640px) {
-  .areas { grid-template-columns: 1fr; max-width: 320px; }
-  .areas li { padding: 10px 0; }
-  .areas li + li { border-left: 0; border-top: 1px solid var(--color-rule); }
 }
 </style>

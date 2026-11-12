@@ -1,5 +1,7 @@
 [
-  { "id": "hci", "order": 1, "title_zh": "人機互動", "title_en": "Human-Computer Interaction", "desc_zh": "設計直覺且友善的人與 AI 互動介面。", "desc_en": "Designing intuitive and inclusive human-AI interfaces.", "icon": "users" },
-  { "id": "intelligent-services", "order": 2, "title_zh": "智慧服務", "title_en": "Intelligent Services", "desc_zh": "打造日常生活中的智慧服務。", "desc_en": "Building intelligent services for everyday life.", "icon": "chip" },
-  { "id": "healthcare", "order": 3, "title_zh": "醫療資訊管理", "title_en": "Healthcare / Medical Informatics Management", "desc_zh": "以資料驅動醫療與健康照護。", "desc_en": "Advancing data-driven healthcare and medical informatics.", "icon": "heart" }
+  { "id": "healthcare", "order": 1, "title_zh": "醫療資訊管理", "title_en": "Healthcare / Medical Informatics Management", "desc_zh": "以資料驅動醫療與健康照護。", "desc_en": "Advancing data-driven healthcare and medical informatics.", "icon": "heart" },
+  { "id": "ecommerce", "order": 2, "title_zh": "電子商務", "title_en": "E-Commerce", "desc_zh": "研究數位平台上的交易、信任與商業模式。", "desc_en": "Studying transactions, trust, and business models on digital platforms.", "icon": "cart" },
+  { "id": "hci", "order": 3, "title_zh": "人機互動", "title_en": "Human-Computer Interaction", "desc_zh": "設計直覺且友善的人與 AI 互動介面。", "desc_en": "Designing intuitive and inclusive human-AI interfaces.", "icon": "users" },
+  { "id": "consumer-behavior", "order": 4, "title_zh": "消費者行為", "title_en": "Consumer Behavior", "desc_zh": "了解使用者如何認識、採用與評價新科技。", "desc_en": "Understanding how people perceive, adopt, and evaluate new technologies.", "icon": "chart" },
+  { "id": "intelligent-services", "order": 5, "title_zh": "智慧型服務", "title_en": "Intelligent Services", "desc_zh": "打造日常生活中的智慧服務。", "desc_en": "Building intelligent services for everyday life.", "icon": "chip" }
 ]

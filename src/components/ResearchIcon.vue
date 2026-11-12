@@ -34,6 +34,11 @@ defineProps({
       <path d="M4 20V4M4 20h16" />
       <path d="M8 16v-4M12 16V8M16 16v-6" />
     </template>
+    <template v-else-if="name === 'cart'">
+      <path d="M2.5 4h2.5l2.2 10.5h10.6L20 7.5H6" />
+      <circle cx="9" cy="19.5" r="1.3" />
+      <circle cx="17" cy="19.5" r="1.3" />
+    </template>
     <template v-else-if="name === 'book'">
       <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z" />
       <path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z" />

@@ -1,8 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import research from '../../data/research.json'
-import { getProfessor, getSetting, pick } from '../../utils/content.js'
+import { getProfessorRow, getSetting } from '../../utils/content.js'
 import ScrollHint from './ScrollHint.vue'
 
 const { t, locale } = useI18n()
@@ -11,16 +10,9 @@ const setting = (key) => getSetting(key, locale.value)
 // 另一種語言：大標題用目前語言，副標用另一種
 const otherLang = computed(() => (locale.value === 'zh' ? 'en' : 'zh'))
 
-// 右欄的三組資訊
-const piText = computed(() =>
-  [getProfessor('name', locale.value), getProfessor('title', locale.value)].filter(Boolean).join(' '),
-)
-const focusText = computed(() =>
-  [...research]
-    .sort((a, b) => a.order - b.order)
-    .map((area) => pick(area, 'title', locale.value))
-    .join(' · '),
-)
+// 主持人：中文「姓名 職稱」在上、英文「Prof. 姓名」在下，不隨語言切換；沒有英文名就只顯示中文
+const piName = getProfessorRow('name')
+const piZh = [piName?.text_zh, getProfessorRow('title')?.text_zh].filter(Boolean).join(' ')
 </script>
 
 <template>
@@ -42,16 +34,15 @@ const focusText = computed(() =>
       <dl class="facts hero-fade">
         <div>
           <dt>{{ t('home.pi') }}</dt>
-          <dd>{{ piText }}</dd>
-        </div>
-        <div>
-          <dt>{{ t('home.focus') }}</dt>
-          <dd>{{ focusText }}</dd>
+          <dd>
+            <span class="pi-name">{{ piZh }}</span>
+            <span v-if="piName?.text_en" class="pi-name-en">{{ t('common.profName', { name: piName.text_en }) }}</span>
+          </dd>
         </div>
         <div v-if="setting('address')">
           <dt>{{ t('home.location') }}</dt>
           <dd>
-            {{ setting('address') }}
+            <span class="address">{{ setting('address') }}</span>
             <a v-if="setting('map_url')" :href="setting('map_url')" target="_blank" rel="noopener" class="map-link">
               {{ t('common.openMap') }}
             </a>
@@ -67,21 +58,36 @@ const focusText = computed(() =>
 .hero { background: var(--color-bg-soft); border-bottom: 1px solid var(--color-rule); }
 .hero-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) clamp(260px, 30%, 340px);   /* 右欄只放主持人與地點，寬度固定範圍，讓標題有更多空間 */
   gap: 56px;
   align-items: end;
   padding-top: 72px;
   padding-bottom: 64px;
 }
-.hero-title { font-size: calc(clamp(2rem, 4.2vw, 3.2rem) * var(--home-scale)); line-height: 1.15; text-wrap: balance; }
+.hero-main { container-type: inline-size; }   /* 讓標題可以用 cqi（左欄寬度的百分比）設定字級 */
+.hero-title { font-size: calc(clamp(2rem, 4.2vw, 3.2rem) * var(--home-scale)); line-height: 1.15; text-wrap: pretty; }
+/* 英文名較長：720px 以上依左欄寬度縮小字級，盡量排成一行
+   5.1cqi 約可讓目前的英文全名剛好一行；名稱變長時會自然換行，不會超出版面 */
+@media (min-width: 721px) {
+  .hero-title:lang(en) { font-size: min(calc(3.2rem * var(--home-scale)), 5.1cqi); }
+}
 .hero-sub { margin: 10px 0 18px; font-family: var(--font-display); font-style: italic; font-size: calc(clamp(1.05rem, 2vw, 1.3rem) * var(--home-scale)); color: var(--color-blue); }
 .hero-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
 
-/* 右欄：左側細分隔線 */
-.facts { display: grid; gap: 18px; margin: 0; padding-left: 32px; border-left: 1px solid var(--color-rule); }
-.facts dt { font-size: calc(0.85rem * var(--home-scale)); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted); }
-.facts dd { margin: 4px 0 0; font-size: calc(1.1rem * var(--home-scale)); line-height: 1.5;}
-.map-link { margin-left: 6px; font-size: calc(0.85rem * var(--home-scale)); }
+/* 右欄：左側細分隔線，主持人與地點上下排列 */
+.facts { display: grid; gap: 28px; margin: 0; padding-left: 32px; border-left: 1px solid var(--color-rule); }
+.facts dt {
+  margin-bottom: 8px;
+  font-size: calc(0.75rem * var(--home-scale));
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.facts dd { display: flex; flex-direction: column; gap: 2px; margin: 0; line-height: 1.5; }
+.pi-name { font-family: var(--font-display); font-size: calc(1.35rem * var(--home-scale)); color: var(--color-navy); }
+.pi-name-en { font-family: var(--font-display); font-style: italic; font-size: calc(1rem * var(--home-scale)); color: var(--color-text-muted); }
+.address { font-size: calc(1rem * var(--home-scale)); }
+.map-link { align-self: flex-start; margin-top: 4px; font-size: calc(0.85rem * var(--home-scale)); }
 
 /* 電腦版收合效果：--progress 由 HomeView 提供（0 = 整頁，1 = 收合完成）
    只用 transform 與 opacity，捲動時不會觸發重排 */
@@ -125,6 +131,20 @@ const focusText = computed(() =>
 /* 960px 以下：單欄，右欄移到下方 */
 @media (max-width: 960px) {
   .hero-inner { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-  .facts { padding-left: 0; padding-top: 24px; border-left: 0; border-top: 1px solid var(--color-rule); }
+  /* 主持人與地點左右並排，上方細分隔線 */
+  .facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 40px;
+    padding-left: 0;
+    padding-top: 24px;
+    border-left: 0;
+    border-top: 1px solid var(--color-rule);
+  }
+}
+
+/* 720px 以下：主持人與地點改回上下排列 */
+@media (max-width: 720px) {
+  .hero-inner { padding-top: 48px; padding-bottom: 48px; gap: 32px; }
+  .facts { grid-template-columns: minmax(0, 1fr); gap: 24px; }
 }
 </style>

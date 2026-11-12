@@ -96,7 +96,7 @@ docs/reference/   視覺參考稿
 參考 `intro-options.html` 的 **A 版（淺色）**。
 
 - 全螢幕、淺藍灰底（`--color-bg-soft`），內容置中，不使用 MainLayout
-- 由上而下：系所小標籤（settings `department`）、實驗室英文全名（Georgia 大字）、中文全名、短分隔線、Research Areas 小標籤與三大研究領域（三欄，細線分隔）、Explore 按鈕 → 首頁
+- 由上而下：系所小標籤（settings `department`）、實驗室英文全名（Georgia 大字）、中文全名、短分隔線、教授英文姓名「Prof. {professor `name` 的 `text_en`}」（Georgia 斜體、輔助藍；`text_en` 空白時不顯示）、Explore 按鈕 → 首頁
 - 底部一行學校與系所（不設「略過 Skip」，進入首頁只靠 Explore 按鈕）
 - **只在第一次造訪 `/` 時自動顯示**（以 localStorage 記錄；讀寫包 try/catch，失敗時當作已看過，不要卡住使用者）
 - 從外部連結直接進入內頁時不經過 Intro
@@ -121,23 +121,21 @@ docs/reference/   視覺參考稿
 
 - 淺藍灰底（`--color-bg-soft`），底部細分隔線；高度依內容，不佔滿整個螢幕
 - 左欄：
-  - 大標題：目前語言的實驗室全名（中文頁顯示中文名，英文頁顯示英文名；Georgia，細字重）
+  - 大標題：目前語言的實驗室全名（中文頁顯示中文名，英文頁顯示英文名；Georgia，細字重）。英文名較長，720px 以上依左欄寬度縮小字級、盡量排成一行，不要排成兩行等寬的方塊；手機版自然換行
   - 副標：另一語言的全名（Georgia 斜體、輔助藍）
-  - 介紹文字（settings `hero_intro`）
   - 兩個按鈕：「探索研究領域」（深藍實心，捲到研究領域）、「最新消息」（深藍外框，捲到最新消息）
-- 右欄：左側細分隔線，三組實驗室資訊（小標籤＋內容）
-  - 主持人：教授中英文姓名與職稱（professor 基本資料 `name`、`title`；姓名依「人名顯示規則」）
-  - 研究方向：三個研究領域名稱
+- 右欄：左側細分隔線，寬度固定在 260～340px，兩組實驗室資訊（小標籤＋內容），上下排列
+  - 主持人：兩行，不隨語言切換。第一行「中文姓名 中文職稱」（例：許文錦 教授，Georgia）；第二行「Prof. 英文姓名」（Georgia 斜體，`name` 的 `text_en` 空白時不顯示）。取自 professor 基本資料 `name`、`title`
   - 地點：settings `address`，有 `map_url` 時加「在 Google 地圖開啟」連結
-- 960px 以下改為單欄，右欄資訊移到下方並改用上方分隔線
+- 960px 以下改為單欄，右欄資訊移到下方並改用上方分隔線，主持人與地點左右並排；720px 以下改回上下排列
 
 ### 3. 研究領域
 
 - 小標籤 OUR FOCUS ＋標題「研究領域」＋一行介紹（settings `research_intro`）
-- 三欄排列，上方一條深藍粗線，欄與欄之間以細線分隔（**不用卡片、不用毛玻璃**）
+- 電腦版：領域有幾個就排幾欄（目前五個），上方一條深藍粗線，欄與欄之間以細線分隔（**不用卡片、不用毛玻璃**）
 - 每欄：簡潔線條圖示（research `icon`，深藍細線、無填色）、領域名稱（Georgia）、一至兩行介紹、底部「相關計畫 →」
 - 整欄可點擊，連到研究計畫頁並以該領域篩選（依 projects 的 `area`）
-- 720px 以下改為單欄，以上方細線分隔
+- 960px 以下，或領域超過五個時，改為列表：每列左邊圖示、右邊名稱與介紹，以上方細線分隔
 
 與參考稿不同：參考稿用 01／02／03 編號，**實作改用 research `icon` 的線條圖示**。
 
@@ -355,7 +353,7 @@ Footer 文字使用淺色（例如 `#C9D5E2`、`#A9BACB`），需維持足夠對
 ### 版面
 
 - 內容最大寬度約 1120px，左右至少 16px 邊距
-- 斷點：960px（導覽列收合、雙欄改單欄）、720px（三欄改單欄、消息列改兩行）
+- 斷點：960px（導覽列收合、雙欄改單欄、研究領域改列表）、720px（三欄改單欄、消息列改兩行）
 - 區塊之間以留白與細線分隔，不用大面積色塊
 
 ### 圖片使用原則
@@ -389,7 +387,7 @@ Footer 文字使用淺色（例如 `#C9D5E2`、`#A9BACB`），需維持足夠對
 | `lab_short_name` | 導覽列、Footer、分頁標題用的簡稱（待確認） |
 | `department` | 系所名稱，Intro 頂端小標籤與底部一行 |
 | `subtitle` | 副標題（目前頁面未使用） |
-| `hero_intro` | Intro 與 Hero 的介紹文字 |
+| `hero_intro` | 介紹文字（目前頁面未使用） |
 | `research_intro` | 首頁研究領域的一行介紹 |
 | `email` | 聯絡信箱 |
 | `address` | 實驗室地址 |
@@ -403,7 +401,7 @@ Footer 文字使用淺色（例如 `#C9D5E2`、`#A9BACB`），需維持足夠對
 | --- | --- |
 | professor `section` | 基本資料、簡介、學歷、經歷、研究專長、開設課程、學術服務、Office Hours、聯絡資訊 |
 | professor `key`（基本資料） | `name`、`title`、`photo`、`short_bio` |
-| research `icon` | `users`、`chip`、`heart`、`chart`、`book` |
+| research `icon` | `users`、`chip`、`heart`、`chart`、`book`、`cart` |
 | members `status` | `current`、`alumni` |
 | members `degree` | `phd`（博士生）、`ms`（碩士生）、`exchange`（交換生）、`undergrad`（專題生） |
 | projects `status` | `ongoing`、`completed` |

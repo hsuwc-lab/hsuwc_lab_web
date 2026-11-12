@@ -19,18 +19,17 @@
     "searchSoon": "Search coming soon",
     "email": "Email",
     "address": "Address",
-    "openMap": "Open in Google Maps"
+    "openMap": "Open in Google Maps",
+    "profName": "Prof. {name}"
   },
   "intro": {
-    "explore": "Explore",
-    "researchAreas": "Research Areas"
+    "explore": "Explore"
   },
   "home": {
   "exploreResearch": "Explore Our Research",
   "nextSection": "Scroll to next section",
   "latestNews": "Latest News",
-  "pi": "Principal Invetigator",
-  "focus": "Research Focus",
+  "pi": "Principal Investigator",
   "location": "Location",
   "researchAreas": "Research Areas",
   "relatedProjects": "Related Projects",

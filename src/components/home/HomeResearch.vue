@@ -39,9 +39,11 @@ const areas = computed(() =>
           class="area"
         >
           <ResearchIcon :name="area.icon" />
-          <h3 class="area-title">{{ area.title }}</h3>
-          <p class="area-desc">{{ area.desc }}</p>
-          <span class="area-more">{{ t('home.relatedProjects') }} →</span>
+          <div class="area-body">
+            <h3 class="area-title">{{ area.title }}</h3>
+            <p class="area-desc">{{ area.desc }}</p>
+            <span class="area-more">{{ t('home.relatedProjects') }} →</span>
+          </div>
         </RouterLink>
       </div>
     </div>
@@ -50,18 +52,27 @@ const areas = computed(() =>
 </template>
 
 <style scoped>
-/* 三欄，上方一條深藍粗線，欄與欄之間細線分隔 */
-.areas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 2px solid var(--color-navy); }
+/* 電腦版：領域有幾個就排幾欄（最多五欄），上方一條深藍粗線，欄與欄之間細線分隔 */
+.areas {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  border-top: 2px solid var(--color-navy);
+}
 .area {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: calc(28px * var(--home-scale)) calc(28px * var(--home-scale)) calc(28px * var(--home-scale)) 0;
+  gap: 12px;
+  padding: calc(28px * var(--home-scale)) calc(22px * var(--home-scale));
   color: inherit;
   text-decoration: none;
 }
-.area + .area { padding-left: calc(28px * var(--home-scale)); border-left: 1px solid var(--color-rule); }
-.area-title { font-size: calc(1.25rem * var(--home-scale)); font-weight: 600; line-height: 1.3; }
+.area:first-child { padding-left: 0; }
+.area:last-child { padding-right: 0; }
+.area + .area { border-left: 1px solid var(--color-rule); }
+.area .research-icon { flex-shrink: 0; }
+.area-body { display: flex; flex: 1; flex-direction: column; gap: 8px; }
+.area-title { font-size: calc(1.15rem * var(--home-scale)); font-weight: 600; line-height: 1.3; }
 .area-desc { flex: 1; color: var(--color-text-muted); }
 .area-more { font-size: calc(0.875rem * var(--home-scale)); color: var(--color-blue); }
 .area:hover .area-title { color: var(--color-blue); }
@@ -83,9 +94,16 @@ const areas = computed(() =>
   }
 }
 
-@media (max-width: 720px) {
-  .areas { grid-template-columns: minmax(0, 1fr); }
-  .area, .area + .area { padding: 24px 0; border-left: 0; }
-  .area + .area { border-top: 1px solid var(--color-rule); }
+/* 列表版：960px 以下，或領域超過五個時（欄寬太窄）
+   每列左邊圖示、右邊名稱與介紹，列與列之間細線分隔 */
+@media (max-width: 960px) {
+  .areas { grid-auto-flow: row; grid-auto-columns: auto; }
+  .area,
+  .area:first-child,
+  .area:last-child { flex-direction: row; gap: 20px; padding: 24px 0; }
+  .area + .area { border-left: 0; border-top: 1px solid var(--color-rule); }
 }
+.areas:has(> .area:nth-child(6)) { grid-auto-flow: row; grid-auto-columns: auto; }
+.areas:has(> .area:nth-child(6)) .area { flex-direction: row; gap: 20px; padding: 24px 0; }
+.areas:has(> .area:nth-child(6)) .area + .area { border-left: 0; border-top: 1px solid var(--color-rule); }
 </style>
