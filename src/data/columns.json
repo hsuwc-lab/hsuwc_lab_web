@@ -1,0 +1,34 @@
+[
+  {
+    "id": "c-2025-trust-1", "date": "2025-03-10",
+    "series_zh": "可信任 AI 筆記", "series_en": "Notes on Trustworthy AI",
+    "title_zh": "醫療 AI 為什麼需要「可解釋」？", "title_en": "Why Does Medical AI Need to Be Explainable?",
+    "summary_zh": "從一個臨床情境談起，說明醫師為什麼不只需要答案，還需要理由。", "summary_en": "Starting from a clinical scenario: why doctors need reasons, not just answers.",
+    "content_zh": "<p>（第一段內文）</p><h2>一個臨床情境</h2><p>（第二段內文）</p><ul><li>重點一</li><li>重點二</li></ul>",
+    "content_en": "<p>(Paragraph 1)</p><h2>A Clinical Scenario</h2><p>(Paragraph 2)</p>",
+    "author_ids": "", "tags": "AI,醫療", "original_url": "", "publish": true
+  },
+  {
+    "id": "c-2025-trust-2", "date": "2025-05-02",
+    "series_zh": "可信任 AI 筆記", "series_en": "Notes on Trustworthy AI",
+    "title_zh": "使用者怎麼判斷一個系統值得信任", "title_en": "",
+    "summary_zh": "信任不是一個開關，而是使用者一次次確認後累積出來的。", "summary_en": "",
+    "content_zh": "<p>（內文）</p>", "content_en": "",
+    "author_ids": "", "tags": "AI,人機互動", "original_url": "https://example.com/original", "publish": true
+  },
+  {
+    "id": "c-2024-service-1", "date": "2024-11-20",
+    "series_zh": "", "series_en": "",
+    "title_zh": "智慧服務的下一步", "title_en": "What Comes Next for Smart Services",
+    "summary_zh": "（摘要）", "summary_en": "(Summary)",
+    "content_zh": "<p>（內文）</p>", "content_en": "<p>(Content)</p>",
+    "author_ids": "m-2023-lin", "tags": "智慧服務", "original_url": "", "publish": true
+  },
+  {
+    "id": "c-draft", "date": "2025-06-01",
+    "series_zh": "", "series_en": "",
+    "title_zh": "草稿（不應出現）", "title_en": "Draft",
+    "summary_zh": "", "summary_en": "", "content_zh": "", "content_en": "",
+    "author_ids": "", "tags": "", "original_url": "", "publish": false
+  }
+]

@@ -377,6 +377,7 @@ Footer 文字使用淺色（例如 `#C9D5E2`、`#A9BACB`），需維持足夠對
 | publications | `id`、`year`、`type`、`title`、`authors`、`venue`、`details`、`doi`、`url`、`author_role`、`index`、`area`、`project_id`、`tags` |
 | news | `id`、`date`、`category`、`title_zh`、`title_en`、`summary_zh`、`summary_en`、`link` |
 | columns | `id`、`date`、`series_zh`、`series_en`、`title_zh`、`title_en`、`summary_zh`、`summary_en`、`doc_zh`、`doc_en`、`author_ids`、`tags`、`original_url`、`publish` |
+| columns（JSON 輸出） | 同上，但 `doc_zh`、`doc_en` 不輸出，改為同步時由 Google 文件轉出的內文 HTML：`content_zh`、`content_en`（同步腳本需過濾 `<script>` 等危險標籤） |
 | meta（自動產生） | `updated_at` |
 
 ### settings 的 key
@@ -416,6 +417,13 @@ Footer 文字使用淺色（例如 `#C9D5E2`、`#A9BACB`），需維持足夠對
 - 勾選欄位：試算表中為核取方塊（TRUE／FALSE），JSON 中為布林值 `true`／`false`
 - 資料關聯：`projects.member_ids → members.id`、`publications.project_id → projects.id`、`projects.area`／`publications.area → research.id`、`columns.author_ids → members.id`
 - id 上架後不可修改（網址與資料關聯都靠它）
+
+### 注意事項
+
+- **professor 的「基本資料」4 列（`name`、`title`、`photo`、`short_bio`）必須存在**，`section` 填「基本資料」、`key` 填對應代碼，內容可以空白但列不能刪
+  - 使用位置：Intro（Prof. 英文姓名）、首頁 Hero 主持人、首頁「指導教授」（照片、姓名、職稱）、教授介紹頁
+  - 少了這幾列時畫面不會報錯，只會讓姓名、職稱整塊消失、按鈕位置跑掉，不容易發現
+  - 改寫 `src/data/professor.json` 假資料、或試算表 professor 分頁時，都要保留這 4 列；同步腳本（第 7 部分）應檢查這 4 列是否存在，缺少時停止並提示
 
 ## 帳號與環境
 

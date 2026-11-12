@@ -44,5 +44,23 @@
   "viewAll": "View All"
 },
 "degrees": { "phd": "Ph.D. Student", "ms": "M.S. Student", "exchange": "Exchange Student", "undergrad": "Undergraduate Researcher", "alumni": "Alumni, Class of {year}" },
-"categories": { "News": "News", "Event": "Event", "Award": "Award", "Publication": "Publication" }
+"categories": { "News": "News", "Event": "Event", "Award": "Award", "Publication": "Publication" },
+"professor": {
+  "bio": "Biography", "education": "Education", "experience": "Experience", "expertise": "Research Expertise",
+  "courses": "Courses", "service": "Academic Service", "officeHours": "Office Hours", "contact": "Contact"
+},
+"filters": {
+  "all": "All", "series": "Series", "tag": "Tag", "year": "Year", "type": "Type",
+  "count": "{n} items", "empty": "No matching items", "clear": "Clear filters"
+},
+"column": {
+  "author": "Author", "readMore": "Read more", "original": "Original article", "share": "Share",
+  "copyLink": "Copy link", "copied": "Copied", "sameSeries": "More in this series",
+  "back": "Back to Column", "notFound": "Article not found", "otherLanguage": "This article is not yet available in English. The Chinese version is shown below."
+},
+"publications": {
+  "read": "Read paper",
+  "types": { "journal": "Journal Article", "conference": "Conference Paper", "book": "Book", "chapter": "Book Chapter" },
+  "roles": { "first": "First Author", "corresponding": "Corresponding Author", "first_corresponding": "First & Corresponding Author", "co_author": "Co-author" }
+}
 }

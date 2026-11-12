@@ -44,5 +44,23 @@
   "viewAll": "View All"
 },
 "degrees": { "phd": "博士生", "ms": "碩士生", "exchange": "交換生", "undergrad": "專題生", "alumni": "{year} 級校友" },
-"categories": { "News": "消息", "Event": "活動", "Award": "獲獎", "Publication": "論文發表" }
+"categories": { "News": "消息", "Event": "活動", "Award": "獲獎", "Publication": "論文發表" },
+"professor": {
+  "bio": "簡介", "education": "學歷", "experience": "經歷", "expertise": "研究專長",
+  "courses": "開設課程", "service": "學術服務", "officeHours": "Office Hours", "contact": "聯絡資訊"
+},
+"filters": {
+  "all": "全部", "series": "系列", "tag": "標籤", "year": "年份", "type": "類型",
+  "count": "共 {n} 筆", "empty": "沒有符合條件的項目", "clear": "清除篩選"
+},
+"column": {
+  "author": "作者", "readMore": "閱讀全文", "original": "原文連結", "share": "分享",
+  "copyLink": "複製連結", "copied": "已複製", "sameSeries": "同系列文章",
+  "back": "回到專欄列表", "notFound": "找不到這篇文章", "otherLanguage": "本文尚無中文版，以下為英文版。"
+},
+"publications": {
+  "read": "閱讀論文",
+  "types": { "journal": "期刊論文", "conference": "研討會論文", "book": "專書", "chapter": "專書章節" },
+  "roles": { "first": "第一作者", "corresponding": "通訊作者", "first_corresponding": "第一暨通訊作者", "co_author": "共同作者" }
+}
 }

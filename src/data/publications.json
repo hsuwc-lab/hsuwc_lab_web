@@ -1,0 +1,6 @@
+[
+  { "id": "p-2025-jmir", "year": 2025, "type": "journal", "title": "Designing Interactive Health Systems for Older Adults", "authors": "W.-C. Hsu, H. Lin, M. Chen", "venue": "Journal of Medical Internet Research", "details": "27, e12345", "doi": "10.2196/12345", "url": "", "author_role": "first_corresponding", "index": "SCIE,Q1", "area": "healthcare", "project_id": "", "tags": "" },
+  { "id": "p-2025-hcii", "year": 2025, "type": "conference", "title": "Trust Calibration in Conversational Agents", "authors": "M. Wang, W.-C. Hsu", "venue": "HCI International 2025", "details": "pp. 101–115", "doi": "", "url": "https://example.com/paper", "author_role": "corresponding", "index": "", "area": "consumer-behavior", "project_id": "", "tags": "" },
+  { "id": "p-2024-tw", "year": 2024, "type": "journal", "title": "智慧服務接受度之實證研究", "authors": "許文錦、張雅婷", "venue": "資訊管理學報", "details": "31(2), 45–70", "doi": "", "url": "", "author_role": "first", "index": "TSSCI", "area": "intelligent-services", "project_id": "", "tags": "" },
+  { "id": "p-2023-book", "year": 2023, "type": "chapter", "title": "Human Factors in Digital Health", "authors": "W.-C. Hsu", "venue": "Handbook of Digital Health", "details": "Springer, pp. 33–50", "doi": "", "url": "", "author_role": "first", "index": "", "area": "healthcare", "project_id": "", "tags": "" }
+]

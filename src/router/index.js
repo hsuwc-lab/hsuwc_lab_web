@@ -53,6 +53,8 @@ const router = createRouter({
   // 換頁時的捲動位置
   scrollBehavior(to, from, savedPosition) {
     if (to.name === from.name && to.params.lang !== from.params.lang) return false
+    // 同一頁只改篩選條件（query）：停在原位
+    if (to.path === from.path && to.hash === from.hash) return false
     if (savedPosition) return savedPosition          // 按上一頁：回到原本位置
     if (to.hash) {
       // 以底部對齊為停靠點的區塊（首頁收合效果中的研究領域）：捲到底部貼齊畫面底部
