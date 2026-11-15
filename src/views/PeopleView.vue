@@ -12,7 +12,7 @@ const base = import.meta.env.BASE_URL
 
 //現任成員與校友名單
 const memberGroups = getMemberGroups()
-const alumiGroups = getAlumniGroups()
+const alumniGroups = getAlumniGroups()
 
 //校友區塊標題（中：級別 / 英：西元年）
 function alumniTitle(classOf){
@@ -22,7 +22,7 @@ function alumniTitle(classOf){
 
 //校友頭像
 const avatar = (member) => (member.photo ? 
-  `${base}image/members/${member.photo}` : defaultAvatar
+  `${base}images/members/${member.photo}` : defaultAvatar
 )
 
 const joinText = computed(() => getSetting('join_text', locale.value))

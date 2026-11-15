@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue'
-import { useI18n } from 'vue-I18n'
+import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import PageHeader from '../components/PageHeader.vue'
 import { formatMonth, getProjects, getResearchArea, getResearchAreas, pick, splitList } from '../utils/content.js'
