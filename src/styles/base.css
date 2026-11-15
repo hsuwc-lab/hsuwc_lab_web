@@ -166,3 +166,10 @@ img {
 }
 .filters-count { margin-left: auto; font-size: 0.85rem; color: var(--color-text-muted); }
 .empty { padding: 48px 0; text-align: center; color: var(--color-text-muted); }
+
+/* 14. 消息分類標籤（首頁最新消息、消息與獲獎） */
+.tag { justify-self: start; padding: 2px 10px; font-size: calc(0.75rem * var(--home-scale)); font-weight: 600; white-space: nowrap; border-radius: 3px; }
+.tag-news { color: var(--tag-news-text); background: var(--tag-news-bg); }
+.tag-event { color: var(--tag-event-text); background: var(--tag-event-bg); }
+.tag-award { color: var(--tag-award-text); background: var(--tag-award-bg); }
+.tag-publication { color: var(--tag-publication-text); background: var(--tag-publication-bg); }

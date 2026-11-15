@@ -51,7 +51,8 @@
 },
 "filters": {
   "all": "All", "series": "Series", "tag": "Tag", "year": "Year", "type": "Type",
-  "count": "{n} items", "empty": "No matching items", "clear": "Clear filters"
+  "count": "{n} items", "empty": "No matching items", "clear": "Clear filters",
+  "category": "Category"
 },
 "column": {
   "author": "Author", "readMore": "Read more", "original": "Original article", "share": "Share",
@@ -62,5 +63,18 @@
   "read": "Read paper",
   "types": { "journal": "Journal Article", "conference": "Conference Paper", "book": "Book", "chapter": "Book Chapter" },
   "roles": { "first": "First Author", "corresponding": "Corresponding Author", "first_corresponding": "First & Corresponding Author", "co_author": "Co-author" }
+},
+"people": {
+  "current": "Current Members", "alumni": "Alumni",
+  "groups": { "phd": "Ph.D. Students", "ms": "M.S. Students", "exchange": "Exchange Students", "undergrad": "Undergraduate Researchers" },
+  "graduated": { "phd": "Ph.D.", "ms": "M.S." },
+  "joinTitle": "Join Our Lab"
+},
+"projects": {
+  "status": { "ongoing": "Ongoing", "completed": "Completed" },
+  "area": "Research Area", "period": "Period", "present": "Present", "pi": "Principal Investigator",
+  "funder": "Funded by", "projectNo": "Project No.", "description": "About the Project", "outcomes": "Outcomes",
+  "members": "Team Members", "publications": "Related Publications", "allPublications": "View all publications",
+  "back": "Back to Projects", "notFound": "Project not found"
 }
 }

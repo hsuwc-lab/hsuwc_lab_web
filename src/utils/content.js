@@ -4,6 +4,8 @@ import members from '../data/members.json'
 import news from '../data/news.json'
 import columns from '../data/columns.json'
 import publications from '../data/publications.json'
+import projects from '../data/projects.json'
+import research from '../data/research.json'
 
 // 取出某列資料在指定語言的欄位；該語言空白時改用另一種語言
 // 例：pick(row, 'title', 'en') 會先找 title_en，沒有就找 title_zh
@@ -29,19 +31,37 @@ export function getProfessor(key, lang) {
   return pick(getProfessorRow(key), 'text', lang)
 }
 
-// 全部身分的排序：博士生 → 碩士生 → 交換生 → 專題生（研究團隊頁也會用到）
+// 全部身分的排序：博士生 → 碩士生 → 交換生 → 專題生
 const DEGREE_ORDER = { phd: 0, ms: 1, exchange: 2, undergrad: 3 }
 
-// 首頁只顯示現任的博士生與碩士生；同身分依入學年由早到晚
-const HOME_DEGREES = ['phd', 'ms']
+// 碩博士：首頁團隊與歷屆畢業生都只列這兩種
+const GRADUATE_DEGREES = ['phd', 'ms']
 
+// 排序規則：先比身分，同身分再比入學年（早的在前）
+function byDegree(a, b) {
+  return (DEGREE_ORDER[a.degree] ?? 9) - (DEGREE_ORDER[b.degree] ?? 9) || a.entry_year - b.entry_year
+}
+
+// 首頁：現任的博士生與碩士生
 export function getCurrentMembers() {
   return members
-    .filter((member) => member.status === 'current' && member.show && HOME_DEGREES.includes(member.degree))
-    .sort((a, b) =>
-      (DEGREE_ORDER[a.degree] ?? 9) - (DEGREE_ORDER[b.degree] ?? 9) ||
-      a.entry_year - b.entry_year,
-    )
+    .filter((member) => member.status === 'current' && member.show && GRADUATE_DEGREES.includes(member.degree))
+    .sort(byDegree)
+}
+
+// 研究團隊頁：全部現任成員，依身分分組
+// 回傳 [{ key: 'phd', items: [...] }, { key: 'ms', items: [...] }, ...]
+export function getMemberGroups() {
+  const current = members.filter((member) => member.status === 'current' && member.show).sort(byDegree)
+  return groupBy(current, (member) => member.degree)
+}
+
+// 研究團隊頁：碩博士校友，依畢業級別分組（新到舊）
+export function getAlumniGroups() {
+  const alumni = members
+    .filter((member) => member.status === 'alumni' && member.show && GRADUATE_DEGREES.includes(member.degree))
+    .sort((a, b) => (b.class_of ?? 0) - (a.class_of ?? 0) || byDegree(a, b))
+  return groupBy(alumni, (member) => member.class_of)
 }
 
 // 最新的3則消息，依日期由新到舊
@@ -92,4 +112,50 @@ export function getPublications() {
 export function paperLink(publication) {
   if (publication.doi) return `https://doi.org/${publication.doi}`
   return publication.url || ''
+}
+
+// 把「已經排好序」的陣列，依 getKey 的結果分組：[{ key, items: [...] }]
+export function groupBy(list, getKey) {
+  const groups = []
+  for (const item of list) {
+    const key = getKey(item)
+    const last = groups[groups.length - 1]
+    if (last && last.key === key) {
+      last.items.push(item)
+    } else {
+      groups.push({ key, items: [item] })
+    }
+  }
+  return groups
+}
+
+// 2024-08 → 2024.08；空白回傳空字串
+export function formatMonth(value) {
+  return value ? value.replace('-', '.') : ''
+}
+
+// 研究領域：依 order 排序；依 id 取一個
+export function getResearchAreas() {
+  return [...research].sort((a, b) => a.order - b.order)
+}
+export function getResearchArea(id) {
+  return research.find((area) => area.id === id)
+}
+
+// 研究計畫：開始日期新到舊；依 id 取一個
+export function getProjects() {
+  return [...projects].sort((a, b) => b.start.localeCompare(a.start))
+}
+export function getProject(id) {
+  return projects.find((project) => project.id === id)
+}
+
+// 某個計畫的相關論文
+export function getProjectPublications(projectId) {
+  return getPublications().filter((item) => item.project_id === projectId)
+}
+
+// 全部消息：新到舊
+export function getNews() {
+  return [...news].sort((a, b) => b.date.localeCompare(a.date))
 }

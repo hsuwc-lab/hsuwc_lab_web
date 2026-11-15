@@ -51,7 +51,8 @@
 },
 "filters": {
   "all": "全部", "series": "系列", "tag": "標籤", "year": "年份", "type": "類型",
-  "count": "共 {n} 筆", "empty": "沒有符合條件的項目", "clear": "清除篩選"
+  "count": "共 {n} 筆", "empty": "沒有符合條件的項目", "clear": "清除篩選",
+  "category": "分類"
 },
 "column": {
   "author": "作者", "readMore": "閱讀全文", "original": "原文連結", "share": "分享",
@@ -62,5 +63,18 @@
   "read": "閱讀論文",
   "types": { "journal": "期刊論文", "conference": "研討會論文", "book": "專書", "chapter": "專書章節" },
   "roles": { "first": "第一作者", "corresponding": "通訊作者", "first_corresponding": "第一暨通訊作者", "co_author": "共同作者" }
+},
+"people": {
+  "current": "現任成員", "alumni": "歷屆畢業生",
+  "groups": { "phd": "博士生", "ms": "碩士生", "exchange": "交換生", "undergrad": "專題生" },
+  "graduated": { "phd": "博士", "ms": "碩士" },
+  "joinTitle": "想加入實驗室？"
+},
+"projects": {
+  "status": { "ongoing": "執行中", "completed": "已結案" },
+  "area": "研究領域", "period": "執行期間", "present": "迄今", "pi": "主持人",
+  "funder": "補助單位", "projectNo": "計畫編號", "description": "計畫介紹", "outcomes": "研究成果",
+  "members": "參與成員", "publications": "相關論文", "allPublications": "查看全部研究著作",
+  "back": "回到研究計畫", "notFound": "找不到這個計畫"
 }
 }
