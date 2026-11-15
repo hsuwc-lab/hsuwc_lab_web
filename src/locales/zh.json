@@ -75,6 +75,6 @@
   "area": "研究領域", "period": "執行期間", "present": "迄今", "pi": "主持人",
   "funder": "補助單位", "projectNo": "計畫編號", "description": "計畫介紹", "outcomes": "研究成果",
   "members": "參與成員", "publications": "相關論文", "allPublications": "查看全部研究著作",
-  "back": "回到研究計畫", "notFound": "找不到這個計畫"
+  "back": "回到研究計畫", "notFound": "找不到這個計畫", "otherArea": "其他領域"
 }
 }

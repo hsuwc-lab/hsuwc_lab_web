@@ -75,6 +75,6 @@
   "area": "Research Area", "period": "Period", "present": "Present", "pi": "Principal Investigator",
   "funder": "Funded by", "projectNo": "Project No.", "description": "About the Project", "outcomes": "Outcomes",
   "members": "Team Members", "publications": "Related Publications", "allPublications": "View all publications",
-  "back": "Back to Projects", "notFound": "Project not found"
+  "back": "Back to Projects", "notFound": "Project not found", "otherArea": "Other Areas"
 }
 }

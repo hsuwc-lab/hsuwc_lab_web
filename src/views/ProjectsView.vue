@@ -10,7 +10,7 @@ const route = useRoute()
 const router = useRouter()
 
 // 計畫屬於哪些領域：area 可以填多個（半形逗號分隔），只留 research 裡有的；一個都沒有就算「其他」
-const AREA_IDS = new(getResearchAreas().map((area) => area.id))
+const AREA_IDS = new Set(getResearchAreas().map((area) => area.id))
 function areaKeys(project) {
   const keys = splitList(project.area).filter((id) => AREA_IDS.has(id))
   return keys.length ? keys : ['other']
