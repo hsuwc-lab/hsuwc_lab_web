@@ -16,7 +16,7 @@ const alumniGroups = getAlumniGroups()
 
 //校友區塊標題（中：級別 / 英：西元年）
 function alumniTitle(classOf){
-  const year = locale.value === 'zh' ? classOf : classOf+1912
+  const year = locale.value === 'zh' ? classOf : classOf+1911
   return t('degrees.alumni', { year })
 }
 

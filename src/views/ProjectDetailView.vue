@@ -5,8 +5,7 @@ import { useI18n } from 'vue-i18n'
 import PageHeader from '../components/PageHeader.vue'
 import MemberCard from '../components/MemberCard.vue'
 import {
-  formatMonth, getMember, getProject, getProjectPublications, getResearchArea,
-  paperLink, pick, splitList,
+  formatMonth, getMember, getProject, getResearchArea, pick, splitList,
 } from '../utils/content.js'
 
 const { t, locale } = useI18n()
@@ -51,12 +50,6 @@ function memberLink(member) {
   const listed = member.status === 'current' || ['phd', 'ms'].includes(member.degree)
   return listed ? { name: 'people', hash: `#${member.id}` } : null
 }
-
-const publications = computed(() =>
-  project.value
-    ? getProjectPublications(project.value.id).map((item) => ({ ...item, link: paperLink(item) }))
-    : [],
-)
 </script>
 
 <template>
@@ -103,18 +96,6 @@ const publications = computed(() =>
           </ul>
         </section>
 
-        <section v-if="publications.length" class="detail-section">
-          <h2 class="detail-heading">{{ t('projects.publications') }}</h2>
-          <ul class="pub-list">
-            <li v-for="item in publications" :key="item.id">
-              <p class="pub-title">{{ item.title }}</p>
-              <p class="pub-info">{{ item.authors }} · <em>{{ item.venue }}</em> · {{ item.year }}</p>
-              <a v-if="item.link" :href="item.link" target="_blank" rel="noopener">{{ t('publications.read') }} ↗</a>
-            </li>
-          </ul>
-          <RouterLink :to="{ name: 'publications' }" class="more">{{ t('projects.allPublications') }} →</RouterLink>
-        </section>
-
         <RouterLink :to="{ name: 'projects' }" class="back">← {{ t('projects.back') }}</RouterLink>
       </div>
     </div>
@@ -141,12 +122,6 @@ const publications = computed(() =>
 .detail-text { max-width: 42em; line-height: 1.8; white-space: pre-line; }   /* 試算表裡的換行在頁面上也換行 */
 
 .member-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 28px 16px; margin: 0; padding: 0; list-style: none; }
-
-.pub-list { margin: 0; padding: 0; list-style: none; }
-.pub-list li + li { margin-top: 20px; }
-.pub-title { margin: 0; font-weight: 600; }
-.pub-info { margin: 2px 0 4px; font-size: 0.9rem; color: var(--color-text-muted); }
-.more { display: inline-block; margin-top: 20px; font-size: 0.9rem; }
 
 .back { display: inline-block; margin-top: 48px; }
 

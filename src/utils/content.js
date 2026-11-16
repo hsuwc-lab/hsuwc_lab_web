@@ -150,11 +150,6 @@ export function getProject(id) {
   return projects.find((project) => project.id === id)
 }
 
-// 某個計畫的相關論文
-export function getProjectPublications(projectId) {
-  return getPublications().filter((item) => item.project_id === projectId)
-}
-
 // 全部消息：新到舊
 export function getNews() {
   return [...news].sort((a, b) => b.date.localeCompare(a.date))

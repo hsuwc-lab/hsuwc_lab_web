@@ -212,14 +212,14 @@ docs/reference/   視覺參考稿
 ### 研究團隊
 
 - **現任成員**：依學籍身分分組（博士生、碩士生、交換生、專題生，順序同首頁），每人顯示照片、中英文姓名、學籍身分（不顯示個人研究興趣）
-- **歷屆畢業生**：只列 `degree` 為 `phd` 或 `ms` 的校友（交換生、專題生離開後不列入）；依畢業級別（`class_of`）由新到舊分組，身分顯示為「113 級校友」／「Alumni, Class of 2025」；**每屆一列**，每位校友一張直式小卡片：圓形頭像（沒有照片時顯示預設頭像）、中英文姓名、學位、碩博士論文題目（最多三行，超過以「…」截斷，滑鼠停留顯示完整題目）；一屆人數放不下時，與首頁研究團隊相同可左右拖拉（共用元件 `ScrollRow`），有 `thesis_url` 時連到臺灣博碩士論文知識加值系統
+- **歷屆畢業生**：只列 `degree` 為 `phd` 或 `ms` 的校友（交換生、專題生離開後不列入）；依畢業級別（`class_of`）由新到舊分組，身分顯示為「115 級校友」／「Alumni, Class of 2026」；**每屆一列**，每位校友一張直式小卡片：圓形頭像（沒有照片時顯示預設頭像）、中英文姓名、學位、碩博士論文題目（最多三行，超過以「…」截斷，滑鼠停留顯示完整題目）；一屆人數放不下時，與首頁研究團隊相同可左右拖拉（共用元件 `ScrollRow`），有 `thesis_url` 時連到臺灣博碩士論文知識加值系統
 - **想加入實驗室？**：頁面最下方，見「全站功能」
 
 ### 研究計畫
 
 - 分「執行中」與「已結案」兩組（依 `status`）
 - 每個計畫：名稱、執行期間、主持人、補助單位、計畫編號（有填才顯示）、摘要
-- 詳情頁：另顯示詳細介紹、研究成果、參與成員（連到研究團隊）、相關論文（publications 的 `project_id`）
+- 詳情頁：另顯示詳細介紹、研究成果、參與成員（連到研究團隊）。研究著作與研究計畫完全分開，詳情頁不列相關論文
 - 支援以研究領域篩選（從首頁研究領域進入時帶入）；一個計畫可屬於多個領域（`area` 半形逗號分隔），每個領域都篩得到
 - `area` 空白或對不到 research 的計畫歸為「其他領域」：顯示「其他領域」小標籤，篩選選單最後一項為「其他領域」（網址 `?area=other`，只在有這類計畫時出現）；research 的 id 不可取名 `other`
 - 結束年月 `end` 空白時顯示「迄今」
@@ -292,9 +292,10 @@ docs/reference/   視覺參考稿
 | `ms` | 碩士生 | M.S. Student |
 | `exchange` | 交換生 | Exchange Student |
 | `undergrad` | 專題生 | Undergraduate Researcher |
-| 校友（`status = alumni`） | 113 級校友 | Alumni, Class of 2025 |
+| 校友（`status = alumni`） | 115 級校友 | Alumni, Class of 2026 |
 
-- 校友年度：`class_of` 填民國學年；中文直接顯示「{class_of} 級校友」，英文換算為西元畢業年（`class_of + 1912`，例如 113 學年度於 2025 年畢業）
+- 校友年度：`class_of` 填**民國畢業年份**（例如 2026 年畢業填 115，與舊網站「115 級」一致）；中文直接顯示「{class_of} 級校友」，英文換算為西元（`class_of + 1911`，例如 115 級 → Class of 2026）
+- 同一個人有兩段學籍時（例如碩士畢業後就讀博士班），每段各一列、使用不同 `id`：碩士那列 `status = alumni`，博士那列 `status = current`，兩邊都會顯示
 
 ## 視覺設計規範
 
@@ -376,7 +377,7 @@ Footer 文字使用淺色（例如 `#C9D5E2`、`#A9BACB`），需維持足夠對
 | research | `id`、`order`、`title_zh`、`title_en`、`desc_zh`、`desc_en`、`icon` |
 | members | `id`、`name_zh`、`name_en`、`status`、`degree`、`entry_year`、`class_of`、`photo`、`thesis_title_zh`、`thesis_title_en`、`thesis_url`、`show` |
 | projects | `id`、`status`、`title_zh`、`title_en`、`start`、`end`、`pi_zh`、`pi_en`、`funder_zh`、`funder_en`、`project_no`、`area`、`summary_zh`、`summary_en`、`description_zh`、`description_en`、`outcomes_zh`、`outcomes_en`、`member_ids` |
-| publications | `id`、`year`、`type`、`title`、`authors`、`venue`、`details`、`doi`、`url`、`author_role`、`index`、`area`、`project_id`、`tags` |
+| publications | `id`、`year`、`type`、`title`、`authors`、`venue`、`details`、`doi`、`url`、`author_role`、`index`、`area`、`tags` |
 | news | `id`、`date`、`category`、`title_zh`、`title_en`、`summary_zh`、`summary_en`、`link` |
 | columns | `id`、`date`、`series_zh`、`series_en`、`title_zh`、`title_en`、`summary_zh`、`summary_en`、`doc_zh`、`doc_en`、`author_ids`、`tags`、`original_url`、`publish` |
 | columns（JSON 輸出） | 同上，但 `doc_zh`、`doc_en` 不輸出，改為同步時由 Google 文件轉出的內文 HTML：`content_zh`、`content_en`（同步腳本需過濾 `<script>` 等危險標籤） |
@@ -417,7 +418,7 @@ Footer 文字使用淺色（例如 `#C9D5E2`、`#A9BACB`），需維持足夠對
 - 日期：`2025-04-15`；年月：`2025-08`
 - 多個值：半形逗號分隔、不加空格（例如 `hci,healthcare`）
 - 勾選欄位：試算表中為核取方塊（TRUE／FALSE），JSON 中為布林值 `true`／`false`
-- 資料關聯：`projects.member_ids → members.id`、`publications.project_id → projects.id`、`projects.area`／`publications.area → research.id`、`columns.author_ids → members.id`
+- 資料關聯：`projects.member_ids → members.id`、`projects.area`／`publications.area → research.id`、`columns.author_ids → members.id`
 - id 上架後不可修改（網址與資料關聯都靠它）
 
 ### 注意事項
