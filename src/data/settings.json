@@ -1,14 +1,47 @@
 [
-  { "key": "lab_name", "value_zh": "人機共生與智慧服務研究室", "value_en": "Human-AI Symbiosis & Smart Services Lab" },
-  { "key": "lab_short_name", "value_zh": "", "value_en": "" },
-  { "key": "department", "value_zh": "○○大學 ○○學系", "value_en": "Department of ○○, ○○ University" },
-  { "key": "subtitle", "value_zh": "以人為本的 AI 研究", "value_en": "Human-Centered AI Research" },
-  { "key": "hero_intro", "value_zh": "連結人、科技與社會，打造更聰明、更健康的未來。", "value_en": "Bridging people, technology, and society for a smarter and healthier future." },
-  { "key": "research_intro", "value_zh": "探索人、科技與醫療交會處的創新解方。", "value_en": "Exploring innovative solutions at the intersection of human, technology, and healthcare." },
-  { "key": "email", "value_zh": "lab@example.edu.tw", "value_en": "" },
-  { "key": "address", "value_zh": "○○大學 ○○館 ○○○ 室", "value_en": "Room ○○○, ○○ Building, ○○ University" },
-  { "key": "map_url", "value_zh": "", "value_en": "" },
-  { "key": "join_text", "value_zh": "", "value_en": "" },
-  { "key": "copyright", "value_zh": "人機共生與智慧服務研究室", "value_en": "Human-AI Symbiosis & Smart Services Lab" },
-  { "key": "join_text", "value_zh": "歡迎對人機互動、智慧型服務與醫療資訊有興趣的同學加入。請先以 Email 與老師聯繫，附上簡歷與有興趣的研究方向。", "value_en": "Students interested in HCI, intelligent services, and healthcare informatics are welcome. Please email the professor with your CV and research interests." }
+  {
+    "key": "lab_name",
+    "value_zh": "人機共生與智慧服務研究室",
+    "value_en": "Human-AI Symbiosis & Smart Services Lab"
+  },
+  {
+    "key": "lab_short_name",
+    "value_zh": "HWC Lab",
+    "value_en": "HWC Lab"
+  },
+  {
+    "key": "department",
+    "value_zh": "國立中央大學 資訊管理學系",
+    "value_en": "Department of Information Management, National Central University"
+  },
+  {
+    "key": "research_intro",
+    "value_zh": "探索人、科技與醫療交會處的創新解方。",
+    "value_en": "Exploring innovative solutions at the intersection of human, technology, and healthcare."
+  },
+  {
+    "key": "email",
+    "value_zh": "hsuwc@mgt.ncu.edu.tw",
+    "value_en": ""
+  },
+  {
+    "key": "address",
+    "value_zh": "國立中央大學 管理二館 I1-927-1 室",
+    "value_en": "Room I1-927-1, Management Building #2, NCU"
+  },
+  {
+    "key": "map_url",
+    "value_zh": "https://www.google.com/maps/search/?api=1&query=國立中央大學管理二館&query_place_id=ChIJ0QdF3ukjaDQRKepI2WG9cXo",
+    "value_en": ""
+  },
+  {
+    "key": "join_text",
+    "value_zh": "歡迎對人機互動、智慧服務或醫療資訊管理有興趣的同學加入。\n請以 Email 聯繫老師，並附上簡歷與感興趣的研究方向。",
+    "value_en": "We welcome students interested in human-computer interaction, intelligent services, or healthcare informatics. \nPlease email the professor with your CV and research interests."
+  },
+  {
+    "key": "copyright",
+    "value_zh": "HWC Lab",
+    "value_en": "HWC Lab"
+  }
 ]

@@ -1,8 +1,22 @@
 [
-  { "id": "n-20250220-1", "date": "2025-02-20", "category": "Publication", "title_zh": "互動式健康系統研究發表於 JMIR", "title_en": "A New Study on Interactive Health Systems Published in JMIR", "summary_zh": "", "summary_en": "", "link": "" },
-  { "id": "n-20250422-1", "date": "2025-04-22", "category": "Award", "title_zh": "本實驗室論文獲 HCI International 2025 最佳論文獎", "title_en": "Our Lab Wins Best Paper Award at HCI International 2025", "summary_zh": "", "summary_en": "", "link": "" },
-  { "id": "n-20250415-1", "date": "2025-04-15", "category": "Event", "title_zh": "可信任 AI 醫療工作坊圓滿落幕", "title_en": "Workshop on Trustworthy AI for Healthcare Successfully Held", "summary_zh": "", "summary_en": "", "link": "" },
-  { "id": "n-20250103-1", "date": "2025-01-03", "category": "News", "title_zh": "歡迎新成員加入實驗室", "title_en": "Welcome New Members to Our Lab!", "summary_zh": "", "summary_en": "", "link": "" },
-  { "id": "n-20241210-1", "date": "2024-12-10", "category": "Award", "title_zh": "碩士生王小明獲 ○○ 學會優等論文獎", "title_en": "Ming Wang Receives the ○○ Outstanding Paper Award", "summary_zh": "恭喜王小明以對話式 AI 信任研究獲獎。", "summary_en": "", "link": "" },
-  { "id": "n-20240905-1", "date": "2024-09-05", "category": "Event", "title_zh": "113 學年度新生座談", "title_en": "New Student Orientation 2024", "summary_zh": "歡迎新生加入，座談簡報請見連結。", "summary_en": "Welcome! Slides are available at the link.", "link": "https://example.com/event" }
+  {
+    "id": "n-20261130-1",
+    "date": "2026-11-30",
+    "category": "Event",
+    "title_zh": "研究室網站正式上線！",
+    "title_en": "Prof. Wen-Chin Hsu’s Lab Website is Officially Live!",
+    "summary_zh": "這裡匯集了我們在「人機共生與智慧服務」領域的最新研究計畫、專欄文章、發表論文與團隊成員介紹。\n歡迎點擊各頁面深入了解，也期待有興趣的同學與合作夥伴隨時與我們交流聯繫！",
+    "summary_en": "Explore our latest research projects, featured articles, publications, and team members in the field of Human-AI Symbiosis & Smart Services. \nProspective students and collaborators are warmly invited to browse around and get in touch!",
+    "link": ""
+  },
+  {
+    "id": "n-20250328-1",
+    "date": "2025-03-28",
+    "category": "News",
+    "title_zh": "歡迎新成員加入實驗室",
+    "title_en": "Welcome New Members to Our Lab!",
+    "summary_zh": "",
+    "summary_en": "",
+    "link": ""
+  }
 ]
