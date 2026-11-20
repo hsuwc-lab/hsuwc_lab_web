@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "sync" : "node --env-file=.env scripts/sync/index.js"
+    "sync": "node --env-file=.env scripts/sync/index.js"
   },
   "dependencies": {
     "vue": "^3.5.44",
@@ -17,6 +17,9 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.10",
     "google-auth-library": "^11.3.4",
+    "marked": "^18.2.1",
+    "sanitize-html": "^2.18.2",
+    "sharp": "^0.35.5",
     "vite": "^8.3.6"
   }
 }

@@ -63,5 +63,16 @@ export const TABS = {
       doi: 'text', url: 'text', author_role: 'text', index: 'text', area: 'text', tags: 'text',
     },
   },
-  // columns（專欄）在 7（下）加入：內文要從 Google 文件轉出來
+  
+  columns: {
+    from: 'professor',
+    hasId: true,
+    keep: (row) => row.publish, // 草稿不進 JSON
+    fields: {
+      id: 'text', date: 'date', series_zh: 'text', series_en: 'text',
+      title_zh: 'text', title_en: 'text', summary_zh: 'text', summary_en: 'text',
+      doc_zh: 'text', doc_en: 'text', // 文件連結：只拿來讀內文，不會輸出
+      author_ids: 'text', tags: 'text', original_url: 'text', publish: 'bool',
+    },
+  },  
 }

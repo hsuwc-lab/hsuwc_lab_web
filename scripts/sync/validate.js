@@ -58,9 +58,20 @@ export function validate(data) {
     errors.push(`professor：「基本資料」少了 key 為 ${key} 的那一列`),
   )
 
-  // 6. news：日期必須是 YYYY-MM-DD（排序靠它）
-  for (const n of data.news) {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(n.date)) errors.push(`news：${n.id} 的日期「${n.date}」格式不對，要寫成 2026-11-18`)
+  // 6. news、columns：日期必須是 YYYY-MM-DD（排序靠它）
+  for (const tab of ['news', 'columns']) {
+    for (const row of data[tab]) {
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(row.date)) {
+        errors.push(`${tab}：${row.id} 的日期「${row.date}」格式不對，要寫成 2026-11-18`)
+      }
+    }
+  }
+
+  // 7. columns：author_ids 要找得到成員（空白代表教授）
+  for (const c of data.columns) {
+    splitList(c.author_ids)
+      .filter((id) => !memberIds.has(id))
+      .forEach((id) => warnings.push(`columns：${c.id} 的作者 ${id} 不在 members 裡`))
   }
 
   return { errors, warnings }

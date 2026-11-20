@@ -25,7 +25,9 @@ const tags = computed(() => splitList(column.value?.tags))
 const otherLang = computed(() => (locale.value === 'zh' ? 'en' : 'zh'))
 const usingOther = computed(() => !column.value?.[`content_${locale.value}`])
 const contentLang = computed(() => (usingOther.value ? otherLang.value : locale.value))
-const content = computed(() => column.value?.[`content_${contentLang.value}`] || '')
+const content = computed(() =>
+  (column.value?.[`content_${contentLang.value}`] || '').replaceAll('{{BASE}}', import.meta.env.BASE_URL),
+)
 
 // 作者：author_ids 空白代表教授；有填就依 id 找成員（人名中英文一起顯示）
 const authors = computed(() => {

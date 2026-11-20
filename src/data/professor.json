@@ -48,7 +48,7 @@
     "text_en": "Professor, Department of Information Management, National Central University"
   },
   {
-    "section": "",
+    "section": "經歷",
     "key": "",
     "order": 1,
     "period": "",
@@ -56,7 +56,7 @@
     "text_en": "Current Chair, Department of Information Management, National Central University"
   },
   {
-    "section": "",
+    "section": "經歷",
     "key": "",
     "order": 1,
     "period": "",
@@ -76,8 +76,16 @@
     "key": "",
     "order": 1,
     "period": "",
-    "text_zh": "人機互動設計（碩士班）",
-    "text_en": "Human-Computer Interaction Design (Graduate)"
+    "text_zh": "管理資訊系統",
+    "text_en": "Management Information Systems"
+  },
+  {
+    "section": "開設課程",
+    "key": "",
+    "order": 1,
+    "period": "",
+    "text_zh": "當代資訊管理課題",
+    "text_en": "Contemporary Issues in Information Management"
   },
   {
     "section": "學術服務",

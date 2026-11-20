@@ -30,3 +30,43 @@ export async function readSheets(spreadsheetId, tabNames) {
   })
   return result
 }
+
+// 列出一個資料夾裡的所有檔案 → [{ id, name, mimeType }, …]
+// Google 一次最多給 1000 筆，檔案更多時會給「下一頁」的 pageToken，所以用迴圈一頁一頁拿
+export async function listFolder(folderId) {
+  const client = await auth.getClient()
+  const files = []
+  let pageToken = ''
+  do {
+    const params = new URLSearchParams({
+      q: `'${folderId}' in parents and trashed = false`, // 在這個資料夾裡、且不在垃圾桶
+      fields: 'nextPageToken, files(id, name, mimeType)', // 只要這幾個欄位，回應比較小
+      pageSize: '1000',
+    })
+    if (pageToken) params.set('pageToken', pageToken)
+    const res = await client.request({ url: `https://www.googleapis.com/drive/v3/files?${params}` })
+    files.push(...res.data.files)
+    pageToken = res.data.nextPageToken
+  } while (pageToken)
+  return files
+}
+
+// 下載一個檔案的原始內容（照片）→ Buffer
+export async function downloadFile(fileId) {
+  const client = await auth.getClient()
+  const res = await client.request({
+    url: `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`, // alt=media：要檔案內容，不是檔案資訊
+    responseType: 'arraybuffer', // 照片是二進位資料，不能當文字讀
+  })
+  return Buffer.from(res.data)
+}
+
+// 把 Google 文件匯出成 Markdown 文字
+export async function exportDocMarkdown(fileId) {
+  const client = await auth.getClient()
+  const res = await client.request({
+    url: `https://www.googleapis.com/drive/v3/files/${fileId}/export?mimeType=text/markdown`,
+    responseType: 'text',
+  })
+  return res.data
+}
