@@ -9,7 +9,6 @@ const { t, locale } = useI18n()
 const route = useRoute()
 const router = useRouter()
 
-const crumbs = computed(() => [{ label: t('nav.professor'), to: { name: 'professor' } }])
 const tabs = computed(() => [
   { label: t('nav.profile'), to: { name: 'professor' } },
   { label: t('nav.column'), to: { name: 'column' } },
@@ -57,7 +56,7 @@ function setFilter(key, value) {
 </script>
 
 <template>
-  <PageHeader :title="t('nav.column')" eyebrow="Professor" :crumbs="crumbs" :tabs="tabs" />
+  <PageHeader :title="t('nav.column')" eyebrow="Professor" :tabs="tabs" />
 
   <div class="container content">
     <div class="filters">
