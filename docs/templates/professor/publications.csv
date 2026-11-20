@@ -1,2 +1,2 @@
-id,year,type,title,authors,venue,details,doi,url,author_role,index,area,tags, edit_url
-pub-20261001-0900,2026,期刊,Example Paper Title,"Example, A., & Test, B.",Example Journal,"12(3), 1–10",10.0000/example,,通訊作者,SCI,hci, (表單自動產生)
+id,year,type,title,authors,venue,details,doi,url,author_role,index,area,tags,edit_url
+pub-20261001-0900,2026,journal,Example Paper Title,"Example, A., & Test, B.",Example Journal,"12(3), 1–10",10.0000/example,,corresponding,SCI,hci,,(表單自動產生)
