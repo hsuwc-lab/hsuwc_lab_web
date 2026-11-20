@@ -64,6 +64,35 @@ export function getAlumniGroups() {
   return groupBy(alumni, (member) => member.class_of)
 }
 
+// 校友分組標題用的年份：中文用民國級別（115），英文換算成西元（2026）
+export function classYear(classOf, lang) {
+  return lang === 'zh' ? classOf : classOf + 1911
+}
+
+// 這位成員有沒有學位論文可列：碩博士校友，且中英文題目至少有一個
+export function hasThesis(member) {
+  return (
+    member.status === 'alumni' &&
+    member.show &&
+    GRADUATE_DEGREES.includes(member.degree) &&
+    Boolean(member.thesis_title_zh || member.thesis_title_en)
+  )
+}
+
+// 學位論文：依畢業級別分組（新到舊）；同屆博士在前，同學位依英文姓名（沒有就用中文姓名）
+// 成員頁判斷某屆要不要顯示「學位論文 →」、論文頁列清單都用這個，規則只寫在這裡
+export function getThesisGroups() {
+  const nameOf = (member) => member.name_en || member.name_zh
+  const list = members
+    .filter(hasThesis)
+    .sort((a, b) =>
+      (b.class_of ?? 0) - (a.class_of ?? 0) ||
+      DEGREE_ORDER[a.degree] - DEGREE_ORDER[b.degree] ||
+      nameOf(a).localeCompare(nameOf(b)),
+    )
+  return groupBy(list, (member) => member.class_of)
+}
+
 // 最新的3則消息，依日期由新到舊
 export function getLatestNews(count = 3) {
   return [...news]

@@ -27,7 +27,14 @@ const items = [
       { name: 'publications', label: 'nav.publications' },
     ],
   },
-  { name: 'people', label: 'nav.people' },
+  {
+    name: 'people',
+    label: 'nav.people',
+    children: [
+      { name: 'people', label: 'nav.members' },
+      { name: 'theses', label: 'nav.theses' },
+    ],
+  },
   { name: 'projects', label: 'nav.projects' },
   { name: 'news', label: 'nav.news' },
 ]
@@ -40,6 +47,7 @@ const SECTION_OF = {
   'column-detail': 'professor',
   publications: 'professor',
   people: 'people',
+  theses: 'people',
   projects: 'projects',
   'project-detail': 'projects',
   news: 'news',

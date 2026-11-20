@@ -5,19 +5,26 @@ import PageHeader from '../components/PageHeader.vue'
 import MemberCard from '../components/MemberCard.vue'
 import ScrollRow from '../components/ScrollRow.vue'
 import defaultAvatar from '../assets/default-avatar.svg'
-import { getAlumniGroups, getMemberGroups, getSetting, pick } from '../utils/content.js'
+import { classYear, getAlumniGroups, getMemberGroups, getSetting, getThesisGroups } from '../utils/content.js'
 
 const {t, locale} = useI18n()
 const base = import.meta.env.BASE_URL
+
+const tabs = computed(() => [
+  { label: t('nav.members'), to: { name: 'people' } },
+  { label: t('nav.theses'), to: { name: 'theses' } },
+])
 
 //現任成員與校友名單
 const memberGroups = getMemberGroups()
 const alumniGroups = getAlumniGroups()
 
+//有學位論文的屆別：只有這些屆的標題旁才顯示「學位論文 →」（規則和論文頁共用）
+const thesisClasses = new Set(getThesisGroups().map((group) => group.key))
+
 //校友區塊標題（中：級別 / 英：西元年）
 function alumniTitle(classOf){
-  const year = locale.value === 'zh' ? classOf : classOf+1911
-  return t('degrees.alumni', { year })
+  return t('degrees.alumni', { year: classYear(classOf, locale.value) })
 }
 
 //校友頭像
@@ -42,7 +49,7 @@ async function copyEmail() {
 </script>
 
 <template>
-  <PageHeader :title="t('nav.people')" eyebrow="Our People" />
+  <PageHeader :title="t('nav.members')" eyebrow="Our People" :tabs="tabs" />
 
   <div class="container content">
     <!-- 現任成員：格子排列 -->
@@ -69,7 +76,14 @@ async function copyEmail() {
         class="alumni-group"
       >
         <template #head>
-          <h3 class="group-title">{{ alumniTitle(group.key) }}</h3>
+          <div class="alumni-head">
+            <h3 class="group-title">{{ alumniTitle(group.key) }}</h3>
+            <RouterLink
+              v-if="thesisClasses.has(group.key)"
+              :to="{ name: 'theses', hash: `#class-${group.key}` }"
+              class="link-more"
+            >{{ t('people.thesesLink') }} →</RouterLink>
+          </div>
         </template>
 
         <div v-for="member in group.items" :id="member.id" :key="member.id" class="alumni-card">
@@ -77,12 +91,6 @@ async function copyEmail() {
           <p class="alumni-name-zh">{{ member.name_zh }}</p>
           <p v-if="member.name_en" class="alumni-name-en">{{ member.name_en }}</p>
           <p class="alumni-degree">{{ t(`people.graduated.${member.degree}`) }}</p>
-          <p v-if="pick(member, 'thesis_title', locale)" class="alumni-thesis" :title="pick(member, 'thesis_title', locale)">
-            <a v-if="member.thesis_url" :href="member.thesis_url" target="_blank" rel="noopener">
-              {{ pick(member, 'thesis_title', locale) }}
-            </a>
-            <template v-else>{{ pick(member, 'thesis_title', locale) }}</template>
-          </p>
         </div>
       </ScrollRow>
     </section>
@@ -148,7 +156,10 @@ async function copyEmail() {
 }
 
 /* 校友：每屆一個 ScrollRow，裡面是固定寬度的直式小卡片 */
-.alumni-group .group-title { width: 100%; }
+/* 屆別標題＋右側「學位論文 →」：以文字基線對齊 */
+.alumni-head { display: flex; align-items: baseline; gap: 16px; width: 100%; }
+/* 屆別字級放大，和旁邊同樣是藍色小字的「學位論文 →」拉開層級 */
+.alumni-head .group-title { font-size: 1.05rem; }
 .alumni-card { width: 170px; text-align: center; }
 .alumni-avatar {
   display: block;
@@ -163,18 +174,6 @@ async function copyEmail() {
 .alumni-name-zh { margin: 0; font-family: var(--font-display); color: var(--color-navy); }
 .alumni-name-en { margin: 0; font-size: 0.85rem; }
 .alumni-degree { margin: 2px 0 0; font-size: 0.8rem; color: var(--color-text-muted); }
-
-/* 論文題目：最多三行，超過用「…」截斷 */
-.alumni-thesis {
-  display: -webkit-box;
-  margin: 8px 0 0;
-  overflow: hidden;
-  font-size: 0.8rem;
-  line-height: 1.5;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-}
 
 /* 加入實驗室 */
 .join {

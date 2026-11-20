@@ -8,6 +8,7 @@ import ColumnView from '../views/ColumnView.vue'
 import ColumnDetailView from '../views/ColumnDetailView.vue'
 import PublicationsView from '../views/PublicationsView.vue'
 import PeopleView from '../views/PeopleView.vue'
+import ThesesView from '../views/ThesesView.vue'
 import ProjectsView from '../views/ProjectsView.vue'
 import ProjectDetailView from '../views/ProjectDetailView.vue'
 import NewsView from '../views/NewsView.vue'
@@ -34,7 +35,18 @@ const routes = [
       { path: 'professor/column', name: 'column', component: ColumnView, meta: { titleKey: 'nav.column' } },
       { path: 'professor/column/:id', name: 'column-detail', component: ColumnDetailView, meta: { titleKey: 'nav.column' } },
       { path: 'professor/publications', name: 'publications', component: PublicationsView, meta: { titleKey: 'nav.publications' } },
-      { path: 'people', name: 'people', component: PeopleView, meta: { titleKey: 'nav.people' } },
+      { path: 'people', name: 'people', component: PeopleView, meta: { titleKey: 'nav.members' } },
+      {
+        path: 'people/theses',
+        name: 'theses',
+        component: ThesesView,
+        meta: { titleKey: 'nav.theses' },
+        // 從成員頁的「學位論文 →」帶著 #class-115 進來時，清掉篩選條件，
+        // 否則該屆可能被篩掉，捲不到
+        beforeEnter: (to) => {
+          if (to.hash && Object.keys(to.query).length) return { path: to.path, hash: to.hash }
+        },
+      },
       { path: 'projects', name: 'projects', component: ProjectsView, meta: { titleKey: 'nav.projects' } },
       { path: 'projects/:id', name: 'project-detail', component: ProjectDetailView, meta: { titleKey: 'nav.projects' } },
       { path: 'news', name: 'news', component: NewsView, meta: { titleKey: 'nav.news' } },
@@ -63,11 +75,13 @@ const router = createRouter({
       const behavior = samePage && !reduceMotion ? 'smooth' : 'auto'
       // 以底部對齊為停靠點的區塊（首頁收合效果中的研究領域）：捲到底部貼齊畫面底部
       const el = document.querySelector(to.hash)
-      if (el && getComputedStyle(el).scrollSnapAlign.includes('end')) {
+      // 找不到區塊（例如那一屆已經沒有論文）：回到頁面頂端
+      if (!el) return { top: 0 }
+      if (getComputedStyle(el).scrollSnapAlign.includes('end')) {
         el.scrollIntoView({ block: 'end', behavior })
         return false
       }
-      return { el: to.hash, top: 80, behavior }       // 網址有 #join：捲到該區塊
+      return { el: to.hash, top: 80, behavior }       // 網址有 #join、#class-115：捲到該區塊（top 讓出固定導覽列的高度）
     }
     return { top: 0 }                                 // 其他：回到頁面頂端
   },

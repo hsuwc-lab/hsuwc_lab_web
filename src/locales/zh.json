@@ -6,6 +6,8 @@
     "column": "專欄",
     "publications": "研究著作",
     "people": "研究團隊",
+    "members": "成員",
+    "theses": "學位論文",
     "projects": "研究計畫",
     "news": "消息與獲獎"
   },
@@ -72,7 +74,13 @@
   "groups": { "phd": "博士生", "ms": "碩士生", "exchange": "交換生", "undergrad": "專題生" },
   "graduated": { "phd": "博士", "ms": "碩士" },
   "joinTitle": "想加入實驗室？",
-  "copyEmail": "複製 Email", "emailCopied": "已複製"
+  "copyEmail": "複製 Email", "emailCopied": "已複製",
+  "thesesLink": "學位論文"
+},
+"theses": {
+  "degree": "學位", "class": "級別", "classOption": "{year} 級",
+  "stats": "已畢業博士 {phd} 位、碩士 {ms} 位",
+  "link": "臺灣博碩士論文", "none": "目前尚無學位論文"
 },
 "projects": {
   "status": { "ongoing": "執行中", "completed": "已結案" },

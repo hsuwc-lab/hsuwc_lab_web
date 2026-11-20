@@ -6,6 +6,8 @@
     "column": "Column",
     "publications": "Publications",
     "people": "People",
+    "members": "Members",
+    "theses": "Theses",
     "projects": "Projects",
     "news": "News"
   },
@@ -72,7 +74,13 @@
   "groups": { "phd": "Ph.D. Students", "ms": "M.S. Students", "exchange": "Exchange Students", "undergrad": "Undergraduate Researchers" },
   "graduated": { "phd": "Ph.D.", "ms": "M.S." },
   "joinTitle": "Join Our Lab",
-  "copyEmail": "Copy email", "emailCopied": "Copied"
+  "copyEmail": "Copy email", "emailCopied": "Copied",
+  "thesesLink": "Theses"
+},
+"theses": {
+  "degree": "Degree", "class": "Class", "classOption": "Class of {year}",
+  "stats": "Graduated: {phd} Ph.D., {ms} M.S.",
+  "link": "NDLTD in Taiwan", "none": "No theses yet."
 },
 "projects": {
   "status": { "ongoing": "Ongoing", "completed": "Completed" },
