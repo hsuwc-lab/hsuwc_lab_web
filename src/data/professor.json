@@ -68,8 +68,40 @@
     "key": "",
     "order": 1,
     "period": "",
+    "text_zh": "醫療資訊管理",
+    "text_en": "Healthcare / Medical Informatics Management"
+  },
+  {
+    "section": "研究專長",
+    "key": "",
+    "order": 1,
+    "period": "",
+    "text_zh": "電子商務",
+    "text_en": "E-Commerce"
+  },
+  {
+    "section": "研究專長",
+    "key": "",
+    "order": 1,
+    "period": "",
     "text_zh": "人機互動",
     "text_en": "Human-Computer Interaction"
+  },
+  {
+    "section": "研究專長",
+    "key": "",
+    "order": 1,
+    "period": "",
+    "text_zh": "消費者行為",
+    "text_en": "Consumer Behavior"
+  },
+  {
+    "section": "研究專長",
+    "key": "",
+    "order": 1,
+    "period": "",
+    "text_zh": "智慧型服務",
+    "text_en": "Intelligent Services"
   },
   {
     "section": "開設課程",
