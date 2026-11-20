@@ -5,6 +5,7 @@ import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { getSetting } from '../utils/content.js'
+import ThemeToggle from './ThemeToggle.vue'
 
 const route = useRoute()
 const { t, locale } = useI18n()
@@ -121,17 +122,7 @@ watch(() => route.fullPath, () => {
             :class="{ 'is-current': locale === 'en' }"
             lang="en"
           >EN</RouterLink>
-          <button
-            type="button"
-            class="search"
-            :aria-label="t('common.searchSoon')"
-            :title="t('common.searchSoon')"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="11" cy="11" r="7" />
-              <path d="m20 20-3.5-3.5" />
-            </svg>
-          </button>
+          <ThemeToggle />
         </div>
       </div>
     </div>
@@ -143,7 +134,7 @@ watch(() => route.fullPath, () => {
   position: sticky;   /* 捲動時固定在頂端 */
   top: 0;
   z-index: 50;        /* 疊在其他內容上面 */
-  background: var(--color-navy);  /* 和 Footer 同色 */
+  background: var(--color-chrome);  /* 和 Footer 同色 */
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 .nav-inner { display: flex; align-items: center; gap: 24px; min-height: var(--nav-height); }
@@ -191,17 +182,6 @@ watch(() => route.fullPath, () => {
 .tools { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: rgba(255, 255, 255, 0.4); }
 .lang { color: rgba(255, 255, 255, 0.75); text-decoration: none; }
 .lang.is-current { color: #fff; font-weight: 600; }
-.search {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  margin-left: 8px;
-  color: #fff;
-  background: none;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 50%;
-}
 
 .menu-toggle { display: none; }
 
@@ -228,7 +208,7 @@ watch(() => route.fullPath, () => {
     flex-direction: column;
     align-items: stretch;
     padding: 8px 16px 16px;
-    background: var(--color-navy);
+    background: var(--color-chrome);
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
   .menu.is-open { display: flex; }

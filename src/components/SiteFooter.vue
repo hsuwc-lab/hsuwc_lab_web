@@ -50,7 +50,7 @@ const fullName = computed(() => setting('lab_name'))
 </template>
 
 <style scoped>
-.footer { color: var(--color-footer-text); background: var(--color-navy); }
+.footer { color: var(--color-footer-text); background: var(--color-chrome); }
 .footer-main {
   display: grid;
   grid-template-columns: auto 1fr auto;

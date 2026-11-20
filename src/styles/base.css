@@ -94,8 +94,8 @@ img {
   border-radius: var(--radius);
   cursor: pointer;
 }
-.btn-primary { color: #fff; background: var(--color-navy); }
-.btn-primary:hover { color: #fff; background: var(--color-blue); border-color: var(--color-blue); }
+.btn-primary { color: var(--color-on-navy); background: var(--color-navy); }
+.btn-primary:hover { color: var(--color-on-navy); background: var(--color-blue); border-color: var(--color-blue); }
 .btn-ghost { color: var(--color-navy); background: transparent; }
 .btn-ghost:hover { color: var(--color-navy); background: var(--color-blue-soft); }
 

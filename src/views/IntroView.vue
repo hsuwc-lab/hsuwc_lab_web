@@ -61,13 +61,13 @@ onMounted(markIntroSeen)
 .explore {
   display: inline-block;
   padding: 12px 32px;
-  color: #fff;
+  color: var(--color-on-navy);
   text-decoration: none;
   letter-spacing: 0.04em;
   background: var(--color-navy);
   border-radius: var(--radius);
 }
-.explore:hover { color: #fff; background: var(--color-blue); }
+.explore:hover { color: var(--color-on-navy); background: var(--color-blue); }
 
 .foot { position: absolute; bottom: 20px; left: 0; right: 0; font-size: 0.8rem; color: var(--color-text-muted); }
 

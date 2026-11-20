@@ -18,6 +18,10 @@
   --color-footer-text: #C9D5E2;
   --color-footer-muted: #A9BACB;
 
+  /* 色彩：導覽列與 Footer 底色、深藍按鈕上的文字（深色模式時與 --color-navy 分開） */
+  --color-chrome: #1E3550;
+  --color-on-navy: #FFFFFF;
+
   /* 消息分類標籤：低飽和度的底色與文字色 */
   --tag-news-bg: #E7EFF7;
   --tag-news-text: #2D5A86;
@@ -39,4 +43,26 @@
   --nav-height: 68px;           /* 導覽列高度 */
   --radius: 4px;                /* 按鈕、照片的圓角 */
   --home-scale: 1;              /* 首頁放大倍率：大螢幕時由 base.css 調大，手機與內頁維持 1 */
+}
+/* 深色模式：由導覽列的開關燈按鈕在 <html> 加上 data-theme="dark" */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #131B25;
+  --color-bg-soft: #18222E;
+  --color-navy: #DCE6F2;        /* 深色模式下改當「最深的文字色」，即淺色 */
+  --color-blue: #8DB7E0;
+  --color-blue-soft: #22303F;
+  --color-text: #D5DDE6;
+  --color-text-muted: #95A3B3;
+  --color-rule: #2C3A4A;
+  --color-chrome: #0E1620;
+  --color-on-navy: #131B25;
+  --tag-news-bg: #1F2F40;
+  --tag-news-text: #9EC2E6;
+  --tag-event-bg: #1C3127;
+  --tag-event-text: #9ACDB0;
+  --tag-award-bg: #352B18;
+  --tag-award-text: #DDC08A;
+  --tag-publication-bg: #2A2740;
+  --tag-publication-text: #BCB3E6;
 }
