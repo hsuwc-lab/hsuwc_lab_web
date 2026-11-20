@@ -1,18 +1,20 @@
-name: Deploy to GitHub Pages
+name: Sync and deploy
 
 on:
   push:
-    branches: [main]      # push 到 main 就部署
-  workflow_dispatch:      # 也可以在 Actions 頁面手動按 Run workflow
+    branches: [main]          # 有人改程式 → 只建置、部署
+  schedule:
+    - cron: '17 19 * * *'     # 每天 UTC 19:17，等於台灣時間凌晨 3:17 → 同步＋部署
+  workflow_dispatch:          # Actions 頁面手動按 Run workflow → 同步＋部署
 
 permissions:
-  contents: read
+  contents: write   # 同步完要把新資料 commit 回 repo
   pages: write
   id-token: write
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false   # 不要中途取消：同步做到一半被砍掉比等一下更麻煩
 
 jobs:
   build:
@@ -24,8 +26,39 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+
+      # ===== 同步：只有定時或手動時執行，push 時跳過 =====
+      - name: Write service account key
+        if: github.event_name != 'push'
+        env:
+          KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+        run: |
+          mkdir -p secrets
+          printf '%s' "$KEY" > secrets/service-account.json
+
+      - name: Sync from Google
+        if: github.event_name != 'push'
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: secrets/service-account.json
+        run: npm run sync:ci
+
+      - name: Commit synced data
+        if: github.event_name != 'push'
+        run: |
+          git add src/data public/images
+          if git diff --cached --quiet; then
+            echo "資料沒有變更，不用 commit"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "sync: 自動同步試算表資料"
+            git pull --rebase
+            git push
+          fi
+
+      # ===== 建置：每次都做 =====
       - run: npm run build
-      # SPA fallback：直接打開內頁網址時，GitHub Pages 找不到檔案會改給 404.html，內容和 index.html 一樣，讓 Vue Router 接手
+      # SPA fallback：直接打開內頁網址時，GitHub Pages 找不到檔案會改給 404.html，讓 Vue Router 接手
       - run: cp dist/index.html dist/404.html
       - uses: actions/upload-pages-artifact@v3
         with:
