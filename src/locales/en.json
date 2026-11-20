@@ -68,7 +68,8 @@
   "current": "Current Members", "alumni": "Alumni",
   "groups": { "phd": "Ph.D. Students", "ms": "M.S. Students", "exchange": "Exchange Students", "undergrad": "Undergraduate Researchers" },
   "graduated": { "phd": "Ph.D.", "ms": "M.S." },
-  "joinTitle": "Join Our Lab"
+  "joinTitle": "Join Our Lab",
+  "copyEmail": "Copy email", "emailCopied": "Copied"
 },
 "projects": {
   "status": { "ongoing": "Ongoing", "completed": "Completed" },

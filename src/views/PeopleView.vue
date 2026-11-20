@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import PageHeader from '../components/PageHeader.vue'
 import MemberCard from '../components/MemberCard.vue'
@@ -27,6 +27,18 @@ const avatar = (member) => (member.photo ?
 
 const joinText = computed(() => getSetting('join_text', locale.value))
 const email = computed(() => getSetting('email', locale.value))
+
+//複製 Email：成功後圖示換成打勾，2 秒後還原
+const copied = ref(false)
+async function copyEmail() {
+  try {
+    await navigator.clipboard.writeText(email.value)
+    copied.value = true
+    setTimeout(() => { copied.value = false }, 2000)
+  } catch {
+    // 瀏覽器不允許複製（例如不是 https）時就不動作，使用者仍可自行反白複製
+  }
+}
 </script>
 
 <template>
@@ -79,7 +91,32 @@ const email = computed(() => getSetting('email', locale.value))
     <section v-if="joinText" id="join" class="join">
       <h2 class="join-title">{{ t('people.joinTitle') }}</h2>
       <p class="join-text">{{ joinText }}</p>
-      <a v-if="email" :href="`mailto:${email}`" class="btn btn-primary">{{ email }}</a>
+      <div v-if="email" class="join-email">
+        <span>{{ email }}</span>
+        <button
+          type="button"
+          class="copy-btn"
+          :aria-label="copied ? t('people.emailCopied') : t('people.copyEmail')"
+          :title="copied ? t('people.emailCopied') : t('people.copyEmail')"
+          @click="copyEmail"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path v-if="copied" d="M5 12.5l4.5 4.5L19 7.5" />
+            <template v-else>
+              <rect x="9" y="9" width="11" height="11" rx="1.5" />
+              <path d="M5 15V5.5A1.5 1.5 0 0 1 6.5 4H15" />
+            </template>
+          </svg>
+        </button>
+      </div>
     </section>
   </div>
 </template>
@@ -149,7 +186,27 @@ const email = computed(() => getSetting('email', locale.value))
   border-radius: var(--radius);
 }
 .join-title { font-size: 1.5rem; font-weight: 400; }
-.join-text { max-width: 36em; margin: 12px auto 24px; color: var(--color-text-muted); }
+/* pre-line：保留試算表儲存格內的換行 */
+.join-text { max-width: 36em; margin: 12px auto 24px; color: var(--color-text-muted); white-space: pre-line; }
+.join-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-navy);
+  font-size: 1.05rem;
+}
+.copy-btn {
+  display: inline-flex;
+  padding: 6px;
+  color: var(--color-blue);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.copy-btn:hover { background: var(--color-blue-soft); }
+.copy-btn:focus-visible { outline: 2px solid var(--color-blue); outline-offset: 2px; }
+.copy-btn svg { width: 18px; height: 18px; }
 
 @media (max-width: 720px) {
   .member-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

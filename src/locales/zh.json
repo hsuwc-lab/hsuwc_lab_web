@@ -68,7 +68,8 @@
   "current": "現任成員", "alumni": "歷屆畢業生",
   "groups": { "phd": "博士生", "ms": "碩士生", "exchange": "交換生", "undergrad": "專題生" },
   "graduated": { "phd": "博士", "ms": "碩士" },
-  "joinTitle": "想加入實驗室？"
+  "joinTitle": "想加入實驗室？",
+  "copyEmail": "複製 Email", "emailCopied": "已複製"
 },
 "projects": {
   "status": { "ongoing": "執行中", "completed": "已結案" },

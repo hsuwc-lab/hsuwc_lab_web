@@ -64,9 +64,9 @@ const mapUrl = computed(() => getSetting('map_url', locale.value))
       <div v-if="contacts.length || address" class="profile-contact">
         <h3 class="side-heading">{{ t('professor.contact') }}</h3>
         <p v-for="(item, index) in contacts" :key="index">{{ item.text }}</p>
-        <p v-if="address">
-          {{ address }}
-          <a v-if="mapUrl" :href="mapUrl" target="_blank" rel="noopener">{{ t('common.openMap') }}</a>
+        <p v-if="address">{{ address }}</p>
+        <p v-if="address && mapUrl">
+          <a :href="mapUrl" target="_blank" rel="noopener">{{ t('common.openMap') }}</a>
         </p>
       </div>
     </aside>
