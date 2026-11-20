@@ -18,6 +18,8 @@
     "language": "語言",
     "themeToDark": "關燈（切換為深色模式）",
     "themeToLight": "開燈（切換為淺色模式）",
+    "themeDark": "切換至深色模式",
+    "themeLight": "切換至淺色模式",
     "email": "Email",
     "address": "地址",
     "openMap": "在 Google 地圖開啟",

@@ -18,6 +18,8 @@
     "language": "Language",
     "themeToDark": "Lights off (dark mode)",
     "themeToLight": "Lights on (light mode)",
+    "themeDark": "Switch to dark mode",
+    "themeLight": "Switch to light mode",
     "email": "Email",
     "address": "Address",
     "openMap": "Open in Google Maps",

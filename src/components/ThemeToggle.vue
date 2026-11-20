@@ -8,6 +8,8 @@ import { theme, toggleTheme } from '../utils/theme.js'
 const { t } = useI18n()
 const isDark = computed(() => theme.value === 'dark')
 const label = computed(() => t(isDark.value ? 'common.themeToLight' : 'common.themeToDark'))
+// 滑鼠停留時的提示：點下去會切換成的模式
+const hint = computed(() => t(isDark.value ? 'common.themeLight' : 'common.themeDark'))
 
 // 每次點擊重新播放拉線動畫：先移除 class，下一個畫格再加回去
 const pulling = ref(false)
@@ -27,7 +29,6 @@ function onClick() {
     :class="{ 'is-dark': isDark, 'is-pulling': pulling }"
     :aria-label="label"
     :aria-pressed="isDark"
-    :title="label"
     @click="onClick"
     @animationend="pulling = false"
   >
@@ -50,11 +51,13 @@ function onClick() {
       <!-- 前腳：拉線時抬起伸向燈線 -->
       <line class="line arm" x1="21" y1="18" x2="21" y2="28.6" />
     </svg>
+    <span class="hint" aria-hidden="true">{{ hint }}</span>
   </button>
 </template>
 
 <style scoped>
 .theme-toggle {
+  position: relative;   /* 讓提示文字以按鈕定位 */
   display: grid;
   place-items: center;
   margin-left: 8px;
@@ -68,6 +71,27 @@ function onClick() {
 }
 .theme-toggle:hover { opacity: 1; }
 .theme-toggle:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+/* 提示文字：按鈕正下方的小標籤，只在有滑鼠的裝置停留時顯示（手機、平板不顯示） */
+.hint {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius);
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .theme-toggle:hover .hint { display: block; }
+}
 
 /* 全部單色白色；線條端點與轉角都用圓角 */
 .body, .lamp, .cord circle { fill: currentColor; }

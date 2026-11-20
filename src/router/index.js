@@ -57,13 +57,17 @@ const router = createRouter({
     if (to.path === from.path && to.hash === from.hash) return false
     if (savedPosition) return savedPosition          // 按上一頁：回到原本位置
     if (to.hash) {
+      // 同一頁內跳到區塊（例如首頁「探索研究領域」）：平滑捲動；使用者偏好減少動態效果時直接跳轉
+      const samePage = to.path === from.path
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      const behavior = samePage && !reduceMotion ? 'smooth' : 'auto'
       // 以底部對齊為停靠點的區塊（首頁收合效果中的研究領域）：捲到底部貼齊畫面底部
       const el = document.querySelector(to.hash)
       if (el && getComputedStyle(el).scrollSnapAlign.includes('end')) {
-        el.scrollIntoView({ block: 'end' })
+        el.scrollIntoView({ block: 'end', behavior })
         return false
       }
-      return { el: to.hash, top: 80 }                 // 網址有 #join：捲到該區塊
+      return { el: to.hash, top: 80, behavior }       // 網址有 #join：捲到該區塊
     }
     return { top: 0 }                                 // 其他：回到頁面頂端
   },
